@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Lotofácil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7d177d',
+                        'primary-light': '#971c97',
+                        'primary-dark': '#6c146c',
+                        'light-bg': '#fbe9fb',
+                        'dark-bg': '#2b082b',
+                        'custom-100': '#ffffff',
+                        'custom-95': '#fbe9fb',
+                        'custom-90': '#f7d4f7',
+                        'custom-85': '#f3bef3',
+                        'custom-80': '#efa9ef',
+                        'custom-75': '#eb93eb',
+                        'custom-70': '#e77ee7',
+                        'custom-65': '#e368e3',
+                        'custom-60': '#df53df',
+                        'custom-55': '#db3ddb',
+                        'custom-50': '#d728d7',
+                        'custom-45': '#c224c2',
+                        'custom-40': '#ac20ac',
+                        'custom-35': '#971c97',
+                        'custom-30': '#811881',
+                        'custom-29': '#7d177d',
+                        'custom-25': '#6c146c',
+                        'custom-20': '#561056',
+                        'custom-15': '#410c41',
+                        'custom-10': '#2b082b',
+                        'custom-5': '#160416',
+                        'custom-0': '#000000'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .loading {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .numero-par {
+            background-color: #f3bef3;
+            color: #410c41;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        
+        .numero-impar {
+            background-color: #db3ddb;
+            color: #160416;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        
+        .dark .numero-par {
+            background-color: #410c41;
+            color: #f3bef3;
+        }
+        
+        .dark .numero-impar {
+            background-color: #6c146c;
+            color: #f7d4f7;
+        }
+        
+        .filtro-ativo {
+            background-color: #7d177d;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">
+                🌸 Resultados Lotofácil
+            </h1>
+            <p class="text-gray-600 dark:text-gray-300">
+                Resultados oficiais da Caixa Econômica Federal
+            </p>
+        </div>
+
+        <!-- Controles -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
+                    <div class="flex flex-col sm:flex-row gap-4 items-center">
+                        <label class="text-gray-700 dark:text-gray-300 font-medium">
+                            Concursos:
+                        </label>
+                        <input 
+                            type="number" 
+                            id="concursoInicio" 
+                            value="1"
+                            placeholder="Concurso inicial"
+                            class="px-4 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
+                        >
+                        <span class="text-gray-500 dark:text-gray-400">até</span>
+                        <input 
+                            type="number" 
+                            id="concursoFim" 
+                            placeholder="Buscando último..."
+                            class="px-4 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
+                        >
+                    </div>
+                    <button 
+                        id="buscarBtn" 
+                        class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 disabled:opacity-50"
+                    >
+                        🔍 Carregar Resultados
+                    </button>
+                </div>
+                
+                <!-- Opções de destacar e ordenação -->
+                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                    <label class="text-gray-700 dark:text-gray-300 font-medium">
+                        Destacar:
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" id="destacarPares" class="mr-2" checked>
+                        <span class="text-gray-700 dark:text-gray-300">Pares</span>
+                        <div class="w-4 h-4 ml-2 rounded border" style="background-color: #f3bef3;"></div>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" id="destacarImpares" class="mr-2" checked>
+                        <span class="text-gray-700 dark:text-gray-300">Ímpares</span>
+                        <div class="w-4 h-4 ml-2 rounded border" style="background-color: #db3ddb;"></div>
+                    </label>
+                    
+                    <!-- Divisor -->
+                    <div class="hidden sm:block w-px h-6 bg-gray-300 dark:bg-gray-600"></div>
+                    
+                    <label class="flex items-center">
+                        <input type="checkbox" id="ordenarCrescente" class="mr-2">
+                        <span class="text-gray-700 dark:text-gray-300">📊 Ordenar dezenas crescente</span>
+                    </label>
+                    
+                    <!-- Divisor -->
+                    <div class="hidden sm:block w-px h-6 bg-gray-300 dark:bg-gray-600"></div>
+                    
+                    <label class="flex items-center">
+                        <input type="checkbox" id="ordenarConcursoDecrescente" class="mr-2" checked>
+                        <span class="text-gray-700 dark:text-gray-300">🔢 Concursos em ordem decrescente</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="hidden text-center py-8">
+            <div class="loading bg-primary rounded-full w-12 h-12 mx-auto mb-4"></div>
+            <p id="loadingText" class="text-gray-600 dark:text-gray-300 mb-4">Carregando resultados...</p>
+            
+            <!-- Barra de progresso -->
+            <div class="max-w-md mx-auto">
+                <div class="bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-2">
+                    <div id="progressBar" class="bg-primary h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                    <span id="progressText">0 / 0 concursos</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+            </div>
+            
+            <!-- Botão cancelar -->
+            <button id="cancelarBtn" class="mt-4 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm transition-colors">
+                ❌ Cancelar Carregamento
+            </button>
+        </div>
+
+        <!-- Erro -->
+        <div id="erro" class="hidden bg-red-100 dark:bg-red-900 border border-red-400 text-red-700 dark:text-red-200 px-4 py-3 rounded-lg mb-6">
+            <span id="erroMsg"></span>
+        </div>
+
+        <!-- Botão Toggle Tabela -->
+        <div id="toggleTabelaContainer" class="hidden mb-4 text-center">
+            <button 
+                id="toggleTabelaBtn" 
+                class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200"
+            >
+                👁️ Ocultar Tabela de Resultados
+            </button>
+        </div>
+
+        <!-- Tabela de Resultados -->
+        <div id="resultados" class="hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                <div class="text-white p-4" style="background: linear-gradient(to right, #7d177d, #971c97);">
+                    <h2 class="text-xl font-bold text-center">LOTOFÁCIL</h2>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 dark:bg-gray-700">
+                            <tr>
+                                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    Concurso
+                                </th>
+                                <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    Data Sorteio
+                                </th>
+                                <!-- 15 colunas para os números -->
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">1º</span>
+                                        <input type="text" id="filtro1" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">2º</span>
+                                        <input type="text" id="filtro2" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">3º</span>
+                                        <input type="text" id="filtro3" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">4º</span>
+                                        <input type="text" id="filtro4" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">5º</span>
+                                        <input type="text" id="filtro5" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">6º</span>
+                                        <input type="text" id="filtro6" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">7º</span>
+                                        <input type="text" id="filtro7" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">8º</span>
+                                        <input type="text" id="filtro8" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">9º</span>
+                                        <input type="text" id="filtro9" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">10º</span>
+                                        <input type="text" id="filtro10" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">11º</span>
+                                        <input type="text" id="filtro11" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">12º</span>
+                                        <input type="text" id="filtro12" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">13º</span>
+                                        <input type="text" id="filtro13" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">14º</span>
+                                        <input type="text" id="filtro14" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-1 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xs">15º</span>
+                                        <input type="text" id="filtro15" placeholder="F" class="mt-1 px-1 py-1 text-xs border rounded w-8">
+                                    </div>
+                                </th>
+                                <th class="px-2 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    Estatística P/I
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaBody" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                            <!-- Resultados serão inseridos aqui -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 px-4 py-3">
+                    <div class="flex flex-col sm:flex-row justify-between items-center">
+                        <p class="text-sm text-gray-600 dark:text-gray-300">
+                            📊 Fonte: Caixa Econômica Federal - API Oficial
+                        </p>
+                        <p id="contadorResultados" class="text-sm font-medium text-primary-dark dark:text-primary-light">
+                            <!-- Contador será inserido aqui -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumo Estatístico -->
+        <div id="resumoEstatistico" class="hidden mt-8 rounded-lg p-6" style="background: linear-gradient(to right, #fbe9fb, #f7d4f7); border: 1px solid #e368e3;">
+            <h3 class="text-xl font-bold mb-6 text-center" style="color: #410c41;">
+                📊 Resumo Estatístico Par/Ímpar
+            </h3>
+            <div id="estatisticasGerais" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Estatísticas serão inseridas aqui -->
+            </div>
+            
+            <!-- Gráfico visual simples -->
+            <div class="mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
+                    🎯 Distribuição de Padrões
+                </h4>
+                <div id="graficoBarras" class="space-y-3">
+                    <!-- Gráfico de barras será inserido aqui -->
+                </div>
+            </div>
+            
+            <!-- Estatísticas por posição (só quando ordem original) -->
+            <div id="estatisticasPosicao" class="hidden mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
+                    🎯 Estatísticas por Posição (Ordem Original do Sorteio)
+                </h4>
+                <div id="dadosPosicoes" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                    <!-- Dados por posição serão inseridos aqui -->
+                </div>
+            </div>
+
+            <!-- Análise Visual por Posição -->
+            <div id="analiseVisual" class="hidden mt-6 p-4 rounded-lg" style="background: linear-gradient(to bottom right, #f7d4f7, #efa9ef); border: 1px solid #db3ddb;">
+                <h4 class="text-lg font-semibold mb-3 text-center" style="color: #410c41;">
+                    📊 Análise Visual - Números que Saíram por Posição
+                </h4>
+                
+                <!-- Controle de jogos a analisar -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+                    <label class="text-sm font-medium" style="color: #561056;">
+                        Analisar últimos:
+                    </label>
+                    <input 
+                        type="number" 
+                        id="jogosAnalisar" 
+                        value="30"
+                        min="1"
+                        max="100"
+                        placeholder="Nº de jogos"
+                        class="px-3 py-2 text-base border rounded-lg focus:ring-2 dark:bg-gray-700 dark:text-white w-24"
+                        style="border-color: #db3ddb; --tw-ring-color: #7d177d;"
+                    >
+                    <span class="text-sm" style="color: #561056;">jogos mais recentes</span>
+                    <button 
+                        id="atualizarAnalise" 
+                        class="text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm"
+                        style="background-color: #7d177d;"
+                        onmouseover="this.style.backgroundColor='#6c146c'"
+                        onmouseout="this.style.backgroundColor='#7d177d'"
+                    >
+                        🔄 Atualizar
+                    </button>
+                </div>
+                
+                <p class="text-sm text-center mb-4" style="color: #561056;">
+                    ✅ = Número saiu nesta posição | Em branco = Número NÃO saiu
+                </p>
+                
+                <!-- Tabela visual -->
+                <div class="overflow-x-auto">
+                    <table id="tabelaAnaliseVisual" class="w-full rounded-lg" style="border: 1px solid #db3ddb;">
+                        <!-- Tabela será gerada dinamicamente -->
+                    </table>
+                </div>
+                
+                <!-- Resumo estatístico -->
+                <div id="resumoAnaliseVisual" class="mt-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-2">
+                    <!-- Resumo será inserido aqui -->
+                </div>
+                
+                <!-- Números que NÃO saíram por posição -->
+                <div class="mt-6 p-4 bg-blue-100 dark:bg-blue-800 rounded-lg">
+                    <p class="text-sm font-medium text-blue-800 dark:text-blue-200 mb-3 text-center">
+                        NÚMEROS QUE NÃO SAÍRAM NOS ÚLTIMOS <span id="jogosEscolhidos">30</span> JOGOS POR POSIÇÃO:
+                    </p>
+                    
+                    <!-- Aviso sobre muitas posições -->
+                    <p class="text-xs text-blue-700 dark:text-blue-300 text-center mb-3">
+                        ⚠️ Mostrando apenas as primeiras 10 posições (de 15 total) para melhor visualização
+                    </p>
+                    
+                    <!-- Tabela dos números que faltam por posição -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full border border-blue-300 dark:border-blue-600 rounded-lg bg-white dark:bg-gray-800">
+                            <thead class="bg-blue-200 dark:bg-blue-700">
+                                <tr>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">1º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">2º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">3º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">4º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">5º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">6º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">7º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">8º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">9º</th>
+                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">10º</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaNumerosNaoSairam" class="bg-blue-50 dark:bg-blue-900">
+                                <!-- Números que não saíram por posição serão inseridos aqui -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Padrões encontrados -->
+            <div class="mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
+                    🔍 Padrões Identificados
+                </h4>
+                <div id="padroes" class="text-sm text-gray-700 dark:text-gray-300">
+                    <!-- Padrões serão inseridos aqui -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações Adicionais -->
+        <div id="infoAdicional" class="hidden mt-8 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-4">
+                📋 Informações do Concurso
+            </h3>
+            <div id="detalhes" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-blue-700 dark:text-blue-300">
+                <!-- Detalhes serão inseridos aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Detectar tema escuro
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Elementos do DOM
+        const concursoInicio = document.getElementById('concursoInicio');
+        const concursoFim = document.getElementById('concursoFim');
+        const buscarBtn = document.getElementById('buscarBtn');
+        const loading = document.getElementById('loading');
+        const loadingText = document.getElementById('loadingText');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const progressPercent = document.getElementById('progressPercent');
+        const cancelarBtn = document.getElementById('cancelarBtn');
+        const erro = document.getElementById('erro');
+        const erroMsg = document.getElementById('erroMsg');
+        const resultados = document.getElementById('resultados');
+        const tabelaBody = document.getElementById('tabelaBody');
+        const infoAdicional = document.getElementById('infoAdicional');
+        const detalhes = document.getElementById('detalhes');
+        const destacarPares = document.getElementById('destacarPares');
+        const destacarImpares = document.getElementById('destacarImpares');
+        const ordenarCrescente = document.getElementById('ordenarCrescente');
+        const ordenarConcursoDecrescente = document.getElementById('ordenarConcursoDecrescente');
+
+        // Variáveis globais
+        let todosResultados = [];
+        let carregamentoAtivo = false;
+        let ultimoConcursoNumero = 0;
+
+        // Função para formatar data
+        function formatarData(dataStr) {
+            if (!dataStr) return 'N/A';
+            
+            try {
+                // Tentar diferentes formatos de data
+                let data;
+                
+                // Se já é uma data válida
+                if (dataStr instanceof Date) {
+                    data = dataStr;
+                } else if (typeof dataStr === 'string') {
+                    // Tentar formato ISO (2018-02-06)
+                    if (dataStr.includes('-')) {
+                        data = new Date(dataStr);
+                    } 
+                    // Tentar formato brasileiro (06/02/2018)
+                    else if (dataStr.includes('/')) {
+                        const [dia, mes, ano] = dataStr.split('/');
+                        data = new Date(ano, mes - 1, dia);
+                    } 
+                    // Tentar como timestamp
+                    else if (!isNaN(dataStr)) {
+                        data = new Date(parseInt(dataStr));
+                    } 
+                    // Tentar parse direto
+                    else {
+                        data = new Date(dataStr);
+                    }
+                } else {
+                    data = new Date(dataStr);
+                }
+                
+                // Verificar se a data é válida
+                if (data && !isNaN(data.getTime())) {
+                    return data.toLocaleDateString('pt-BR');
+                } else {
+                    return 'N/A';
+                }
+            } catch (error) {
+                console.error('Erro ao formatar data:', dataStr, error);
+                return 'N/A';
+            }
+        }
+
+        // Função para buscar último concurso
+        async function buscarUltimoConcurso() {
+            try {
+                console.log('Tentando buscar último concurso da Lotofácil...');
+                const response = await fetch('https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil');
+                
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                console.log('Dados recebidos da API:', data);
+                
+                if (!data || typeof data.numero === 'undefined') {
+                    throw new Error('Resposta da API não contém número do concurso');
+                }
+                
+                const ultimoConcurso = data.numero;
+                console.log('Último concurso encontrado:', ultimoConcurso);
+                return ultimoConcurso;
+                
+            } catch (error) {
+                console.error('Erro detalhado ao buscar último concurso:', error);
+                
+                // Fallback: usar último concurso conhecido da Lotofácil (3500)
+                const ultimoConhecido = 3500;
+                
+                console.log(`Usando fallback: último concurso conhecido ${ultimoConhecido}`);
+                return ultimoConhecido;
+            }
+        }
+
+        // Função para atualizar progresso
+        function atualizarProgresso(atual, total) {
+            const porcentagem = Math.round((atual / total) * 100);
+            progressBar.style.width = `${porcentagem}%`;
+            progressText.textContent = `${atual} / ${total} concursos`;
+            progressPercent.textContent = `${porcentagem}%`;
+        }
+
+        // Função para cancelar carregamento
+        function cancelarCarregamento() {
+            carregamentoAtivo = false;
+            loading.classList.add('hidden');
+            buscarBtn.disabled = false;
+            loadingText.textContent = 'Carregamento cancelado';
+        }
+
+        // Função para buscar resultados de múltiplos concursos
+        async function buscarResultados() {
+            const inicio = parseInt(concursoInicio.value) || 1;
+            let fim = parseInt(concursoFim.value);
+
+            // Mostrar loading
+            loading.classList.remove('hidden');
+            resultados.classList.add('hidden');
+            erro.classList.add('hidden');
+            infoAdicional.classList.add('hidden');
+            buscarBtn.disabled = true;
+            carregamentoAtivo = true;
+
+            try {
+                // Se não especificou fim, buscar último concurso
+                if (!fim) {
+                    loadingText.textContent = 'Buscando último concurso...';
+                    fim = await buscarUltimoConcurso();
+                    if (!fim) throw new Error('Não foi possível determinar o último concurso');
+                    ultimoConcursoNumero = fim;
+                    concursoFim.value = fim; // Atualizar o campo visual
+                }
+
+                // Validações
+                if (inicio > fim) {
+                    throw new Error('Concurso inicial não pode ser maior que o final');
+                }
+
+                const totalConcursos = fim - inicio + 1;
+                const tamanhoBatch = 10; // Reduzido para 10 por lote para melhor estabilidade
+                let concursosCarregados = 0;
+
+                loadingText.textContent = `Carregando ${totalConcursos} concursos em lotes...`;
+                atualizarProgresso(0, totalConcursos);
+
+                todosResultados = [];
+
+                // Carregar em lotes com retry
+                for (let i = inicio; i <= fim && carregamentoAtivo; i += tamanhoBatch) {
+                    const fimBatch = Math.min(i + tamanhoBatch - 1, fim);
+                    
+                    // Criar promises para o lote atual
+                    const promisesBatch = [];
+                    for (let j = i; j <= fimBatch; j++) {
+                        promisesBatch.push(buscarConcursoComRetry(j));
+                    }
+
+                    // Executar lote em paralelo
+                    const resultadosBatch = await Promise.allSettled(promisesBatch);
+                    
+                    // Processar resultados do lote
+                    resultadosBatch.forEach((resultado, index) => {
+                        if (resultado.status === 'fulfilled' && resultado.value) {
+                            todosResultados.push(resultado.value);
+                        }
+                        concursosCarregados++;
+                        
+                        // Atualizar progresso
+                        atualizarProgresso(concursosCarregados, totalConcursos);
+                    });
+
+                    // Atualizar interface a cada lote
+                    if (todosResultados.length > 0) {
+                        // Ordenar e exibir resultados parciais
+                        todosResultados.sort((a, b) => a.numero - b.numero);
+                        exibirTodosResultados();
+                    }
+
+                    // Pausa maior para não sobrecarregar a API
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                }
+
+                if (!carregamentoAtivo) {
+                    throw new Error('Carregamento cancelado pelo usuário');
+                }
+
+                // Ordenar final
+                todosResultados.sort((a, b) => a.numero - b.numero);
+
+                if (todosResultados.length === 0) {
+                    throw new Error('Nenhum resultado encontrado na API. Tente novamente.');
+                }
+
+                loadingText.textContent = `✅ Carregados ${todosResultados.length} concursos com sucesso!`;
+                exibirTodosResultados();
+                gerarResumoEstatistico();
+                
+            } catch (error) {
+                console.error('Erro ao buscar resultados:', error);
+                erroMsg.textContent = error.message;
+                erro.classList.remove('hidden');
+            } finally {
+                loading.classList.add('hidden');
+                buscarBtn.disabled = false;
+                carregamentoAtivo = false;
+            }
+        }
+
+        // Função para carregar TODOS os concursos automaticamente
+        async function carregarTodosOsConcursos() {
+            loadingText.textContent = 'Iniciando carregamento de TODOS os concursos da Lotofácil...';
+            
+            try {
+                // Buscar último concurso
+                const ultimoConcurso = await buscarUltimoConcurso();
+                if (!ultimoConcurso) {
+                    throw new Error('Não foi possível determinar o último concurso');
+                }
+
+                ultimoConcursoNumero = ultimoConcurso;
+                
+                // Definir do primeiro ao último
+                concursoInicio.value = 1;
+                concursoFim.value = ultimoConcurso;
+                
+                // Iniciar carregamento
+                await buscarResultados();
+                
+            } catch (error) {
+                console.error('Erro ao carregar todos os concursos:', error);
+                erroMsg.textContent = `Erro ao carregar todos os concursos: ${error.message}`;
+                erro.classList.remove('hidden');
+                loading.classList.add('hidden');
+            }
+        }
+
+        // Função para buscar um concurso específico
+        async function buscarConcurso(numero) {
+            try {
+                const response = await fetch(`https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/${numero}`);
+                if (!response.ok) return null;
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error(`Erro ao buscar concurso ${numero}:`, error);
+                return null;
+            }
+        }
+
+        // Função para buscar um concurso com retry
+        async function buscarConcursoComRetry(numero, tentativas = 3) {
+            for (let i = 0; i < tentativas; i++) {
+                try {
+                    const response = await fetch(`https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/${numero}`, {
+                        timeout: 10000 // 10 segundos timeout
+                    });
+                    if (!response.ok) {
+                        if (i === tentativas - 1) return null;
+                        await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1))); // Espera progressiva
+                        continue;
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error(`Tentativa ${i + 1} falhou para concurso ${numero}:`, error);
+                    if (i === tentativas - 1) return null;
+                    await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1))); // Espera progressiva
+                }
+            }
+            return null;
+        }
+
+        // Função para criar célula de número com destaque par/ímpar
+        function criarCelulaNumero(numero) {
+            const cellNumero = document.createElement('td');
+            cellNumero.className = 'px-1 py-3 whitespace-nowrap text-center text-sm font-medium text-gray-900 dark:text-white';
+            cellNumero.textContent = numero;
+            cellNumero.dataset.numero = numero;
+
+            // Aplicar cores baseado em par/ímpar
+            aplicarDestaque(cellNumero, numero);
+
+            return cellNumero;
+        }
+
+        // Função para aplicar destaque par/ímpar
+        function aplicarDestaque(elemento, numero) {
+            elemento.classList.remove('numero-par', 'numero-impar');
+            
+            if (destacarPares.checked && numero % 2 === 0) {
+                elemento.classList.add('numero-par');
+            } else if (destacarImpares.checked && numero % 2 === 1) {
+                elemento.classList.add('numero-impar');
+            }
+        }
+
+        // Função para calcular estatísticas par/ímpar
+        function calcularEstatisticasParImpar(numeros) {
+            if (!numeros || !Array.isArray(numeros)) {
+                return { pares: 0, impares: 0, texto: 'N/A' };
+            }
+            
+            let pares = 0;
+            let impares = 0;
+            
+            numeros.forEach(numero => {
+                if (numero % 2 === 0) {
+                    pares++;
+                } else {
+                    impares++;
+                }
+            });
+            
+            return { 
+                pares, 
+                impares, 
+                texto: `${pares}P/${impares}I`,
+                maioria: pares > impares ? 'pares' : (impares > pares ? 'impares' : 'equilibrado')
+            };
+        }
+
+        // Função para exibir todos os resultados na tabela
+        function exibirTodosResultados() {
+            tabelaBody.innerHTML = '';
+
+            // Criar uma cópia ordenada conforme a seleção do usuário
+            const resultadosParaExibir = [...todosResultados].sort((a, b) => {
+                if (ordenarConcursoDecrescente.checked) {
+                    return b.numero - a.numero; // Decrescente (último primeiro)
+                } else {
+                    return a.numero - b.numero; // Crescente (primeiro primeiro)
+                }
+            });
+
+            resultadosParaExibir.forEach(data => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50 dark:hover:bg-gray-700';
+                row.dataset.concurso = data.numero;
+
+                // Número do concurso
+                const cellConcurso = document.createElement('td');
+                cellConcurso.className = 'px-2 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white';
+                cellConcurso.textContent = data.numero;
+                row.appendChild(cellConcurso);
+
+                // Data do sorteio
+                const cellData = document.createElement('td');
+                cellData.className = 'px-2 py-3 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300';
+                
+                // Tentar diferentes campos de data se dataApuracao não estiver disponível
+                const dataFormatada = formatarData(data.dataApuracao) || 
+                                    formatarData(data.dataSorteio) || 
+                                    formatarData(data.data) || 
+                                    'N/A';
+                                    
+                cellData.textContent = dataFormatada;
+                row.appendChild(cellData);
+
+                // Dezenas sorteadas (15 números da Lotofácil)
+                if (data.dezenasSorteadasOrdemSorteio) {
+                    // Decidir se ordena ou mantém ordem original
+                    let numerosExibir = [...data.dezenasSorteadasOrdemSorteio];
+                    if (ordenarCrescente.checked) {
+                        numerosExibir.sort((a, b) => a - b);
+                    }
+                    
+                    numerosExibir.forEach((numero, index) => {
+                        const cellNumero = criarCelulaNumero(numero);
+                        cellNumero.dataset.coluna = index + 1;
+                        cellNumero.dataset.numeroOriginal = data.dezenasSorteadasOrdemSorteio[index];
+                        row.appendChild(cellNumero);
+                    });
+                }
+
+                // Estatísticas Par/Ímpar
+                const cellEstatisticas = document.createElement('td');
+                cellEstatisticas.className = 'px-2 py-3 whitespace-nowrap text-center';
+                
+                const stats = calcularEstatisticasParImpar(data.dezenasSorteadasOrdemSorteio);
+                const spanStats = document.createElement('span');
+                spanStats.className = 'inline-flex items-center px-2 py-1 text-xs font-bold rounded-full';
+                
+                // Cores baseadas na maioria
+                if (stats.maioria === 'pares') {
+                    spanStats.className += ' bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
+                } else if (stats.maioria === 'impares') {
+                    spanStats.className += ' bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200';
+                } else {
+                    spanStats.className += ' bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
+                }
+                
+                spanStats.textContent = stats.texto;
+                spanStats.title = `${stats.pares} números pares e ${stats.impares} números ímpares`;
+                
+                cellEstatisticas.appendChild(spanStats);
+                row.appendChild(cellEstatisticas);
+
+                tabelaBody.appendChild(row);
+            });
+
+            resultados.classList.remove('hidden');
+            
+            // Mostrar botão toggle quando a tabela aparecer
+            document.getElementById('toggleTabelaContainer').classList.remove('hidden');
+            
+            // Aplicar filtros existentes
+            aplicarFiltros();
+        }
+
+        // Função para aplicar filtros
+        function aplicarFiltros() {
+            const filtros = [];
+            for (let i = 1; i <= 15; i++) { // 15 números da Lotofácil
+                const filtro = document.getElementById(`filtro${i}`).value.trim();
+                filtros.push(filtro);
+            }
+
+            const rows = tabelaBody.querySelectorAll('tr');
+            let resultadosVisiveis = 0;
+            
+            rows.forEach(row => {
+                let mostrar = true;
+                
+                // Verificar filtros das colunas - mais flexível
+                filtros.forEach((filtro, index) => {
+                    if (filtro) {
+                        const celula = row.querySelector(`td[data-coluna="${index + 1}"]`);
+                        if (celula) {
+                            const numero = celula.textContent.trim();
+                            // Filtro mais flexível - suporta múltiplos números separados por vírgula
+                            const numerosFiltro = filtro.split(',').map(n => n.trim());
+                            const encontrou = numerosFiltro.some(nf => {
+                                // Suporta busca exata ou parcial
+                                return numero === nf || numero.includes(nf);
+                            });
+                            if (!encontrou) {
+                                mostrar = false;
+                            }
+                        }
+                    }
+                });
+
+                row.style.display = mostrar ? '' : 'none';
+                if (mostrar) {
+                    resultadosVisiveis++;
+                }
+            });
+
+            // Atualizar contador
+            atualizarContador(resultadosVisiveis, todosResultados.length);
+        }
+
+        // Função para atualizar contador de resultados
+        function atualizarContador(visiveis, total) {
+            const contador = document.getElementById('contadorResultados');
+            if (visiveis === total) {
+                contador.textContent = `📊 ${total} concursos carregados`;
+            } else {
+                contador.textContent = `📊 ${visiveis} de ${total} concursos (filtrado)`;
+            }
+        }
+
+        // Função para atualizar destaques
+        function atualizarDestaques() {
+            const numeros = document.querySelectorAll('td[data-numero]');
+            numeros.forEach(elemento => {
+                const numero = parseInt(elemento.dataset.numero);
+                aplicarDestaque(elemento, numero);
+            });
+        }
+
+        // Event listeners
+        buscarBtn.addEventListener('click', buscarResultados);
+        cancelarBtn.addEventListener('click', cancelarCarregamento);
+        
+        // Event listeners para filtros
+        for (let i = 1; i <= 15; i++) { // 15 números da Lotofácil
+            const filtro = document.getElementById(`filtro${i}`);
+            filtro.addEventListener('input', aplicarFiltros);
+        }
+
+        // Event listeners para checkboxes de destaque
+        destacarPares.addEventListener('change', atualizarDestaques);
+        destacarImpares.addEventListener('change', atualizarDestaques);
+        
+        // Event listener para ordenação crescente das dezenas
+        ordenarCrescente.addEventListener('change', () => {
+            if (todosResultados.length > 0) {
+                exibirTodosResultados();
+                gerarResumoEstatistico(); // Atualizar estatísticas quando mudar a ordenação
+            }
+        });
+
+        // Event listener para ordenação decrescente dos concursos
+        ordenarConcursoDecrescente.addEventListener('change', () => {
+            if (todosResultados.length > 0) {
+                exibirTodosResultados();
+            }
+        });
+
+        // Enter nos campos de concurso
+        concursoInicio.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') buscarResultados();
+        });
+        
+        concursoFim.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') buscarResultados();
+        });
+
+        // Função para calcular estatísticas por posição
+        function calcularEstatisticasPorPosicao() {
+            const estatisticasPorPosicao = {};
+            
+            // Inicializar estrutura para cada posição (1-15)
+            for (let pos = 1; pos <= 15; pos++) {
+                estatisticasPorPosicao[pos] = {};
+                // Inicializar contadores para números 1-25
+                for (let num = 1; num <= 25; num++) {
+                    estatisticasPorPosicao[pos][num] = 0;
+                }
+            }
+            
+            // Contar ocorrências por posição (ordem original do sorteio)
+            todosResultados.forEach(resultado => {
+                if (resultado.dezenasSorteadasOrdemSorteio && resultado.dezenasSorteadasOrdemSorteio.length >= 15) {
+                    resultado.dezenasSorteadasOrdemSorteio.forEach((numero, index) => {
+                        const posicao = index + 1; // Posições 1-15
+                        if (posicao <= 15 && numero >= 1 && numero <= 25) {
+                            estatisticasPorPosicao[posicao][numero]++;
+                        }
+                    });
+                }
+            });
+            
+            // Calcular mais e menos frequentes por posição
+            const resultadoPorPosicao = {};
+            for (let pos = 1; pos <= 15; pos++) {
+                const contadores = estatisticasPorPosicao[pos];
+                const numerosOrdenados = Object.entries(contadores)
+                    .filter(([num, count]) => count > 0) // Apenas números que apareceram
+                    .sort(([,a], [,b]) => b - a); // Ordenar por frequência (maior primeiro)
+                
+                const maisFrequente = numerosOrdenados[0] || ['N/A', 0];
+                const menosFrequente = numerosOrdenados[numerosOrdenados.length - 1] || ['N/A', 0];
+                
+                resultadoPorPosicao[pos] = {
+                    mais: { numero: parseInt(maisFrequente[0]), freq: maisFrequente[1] },
+                    menos: { numero: parseInt(menosFrequente[0]), freq: menosFrequente[1] },
+                    todos: numerosOrdenados
+                };
+            }
+            
+            return resultadoPorPosicao;
+        }
+
+        // Função para gerar resumo estatístico
+        function gerarResumoEstatistico() {
+            if (todosResultados.length === 0) return;
+
+            const resumoDiv = document.getElementById('resumoEstatistico');
+            const estatisticasDiv = document.getElementById('estatisticasGerais');
+            const graficoDiv = document.getElementById('graficoBarras');
+            const padroesDiv = document.getElementById('padroes');
+            const estatisticasPosicaoDiv = document.getElementById('estatisticasPosicao');
+            const dadosPosicoes = document.getElementById('dadosPosicoes');
+
+            // Calcular estatísticas
+            let totalPares = 0, totalImpares = 0;
+            let concursosMaioriaPares = 0, concursosMaioriaImpares = 0, concursosEquilibrados = 0;
+            const padroesCombinacoes = {};
+
+            todosResultados.forEach(resultado => {
+                const stats = calcularEstatisticasParImpar(resultado.dezenasSorteadasOrdemSorteio);
+                totalPares += stats.pares;
+                totalImpares += stats.impares;
+
+                if (stats.maioria === 'pares') concursosMaioriaPares++;
+                else if (stats.maioria === 'impares') concursosMaioriaImpares++;
+                else concursosEquilibrados++;
+
+                // Contar padrões específicos
+                const padrao = stats.texto;
+                padroesCombinacoes[padrao] = (padroesCombinacoes[padrao] || 0) + 1;
+            });
+
+            const totalConcursos = todosResultados.length;
+            const percPares = ((concursosMaioriaPares / totalConcursos) * 100).toFixed(1);
+            const percImpares = ((concursosMaioriaImpares / totalConcursos) * 100).toFixed(1);
+            const percEquilibrados = ((concursosEquilibrados / totalConcursos) * 100).toFixed(1);
+
+            // Cards estatísticos
+            estatisticasDiv.innerHTML = `
+                <div class="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-blue-600 dark:text-blue-300">${concursosMaioriaPares}</div>
+                    <div class="text-sm text-blue-800 dark:text-blue-200">Concursos com</div>
+                    <div class="text-sm font-semibold text-blue-800 dark:text-blue-200">Maioria Pares</div>
+                    <div class="text-xs text-blue-600 dark:text-blue-400">${percPares}%</div>
+                </div>
+                <div class="p-4 rounded-lg text-center" style="background-color: #f7d4f7;">
+                    <div class="text-2xl font-bold" style="color: #7d177d;">${concursosMaioriaImpares}</div>
+                    <div class="text-sm" style="color: #410c41;">Concursos com</div>
+                    <div class="text-sm font-semibold" style="color: #410c41;">Maioria Ímpares</div>
+                    <div class="text-xs" style="color: #561056;">${percImpares}%</div>
+                </div>
+                <div class="bg-yellow-50 dark:bg-yellow-900 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-yellow-600 dark:text-yellow-300">${concursosEquilibrados}</div>
+                    <div class="text-sm text-yellow-800 dark:text-yellow-200">Concursos</div>
+                    <div class="text-sm font-semibold text-yellow-800 dark:text-yellow-200">Equilibrados</div>
+                    <div class="text-xs text-yellow-600 dark:text-yellow-400">${percEquilibrados}%</div>
+                </div>
+                <div class="p-4 rounded-lg text-center" style="background-color: #f3bef3;">
+                    <div class="text-lg font-bold" style="color: #7d177d;">${totalPares}P / ${totalImpares}I</div>
+                    <div class="text-sm" style="color: #410c41;">Total de</div>
+                    <div class="text-sm font-semibold" style="color: #410c41;">Números Sorteados</div>
+                    <div class="text-xs" style="color: #561056;">${totalConcursos} concursos</div>
+                </div>
+            `;
+
+            // Gráfico de barras visual
+            const maxValor = Math.max(concursosMaioriaPares, concursosMaioriaImpares, concursosEquilibrados);
+            graficoDiv.innerHTML = `
+                <div class="flex items-center">
+                    <div class="w-20 text-sm text-gray-600 dark:text-gray-400">Maioria Pares:</div>
+                    <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-6 mx-3">
+                        <div class="bg-blue-500 h-6 rounded-full flex items-center justify-end pr-2" style="width: ${(concursosMaioriaPares/maxValor)*100}%">
+                            <span class="text-xs text-white font-bold">${concursosMaioriaPares}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-20 text-sm text-gray-600 dark:text-gray-400">Maioria Ímpares:</div>
+                    <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-6 mx-3">
+                        <div class="bg-pink-500 h-6 rounded-full flex items-center justify-end pr-2" style="width: ${(concursosMaioriaImpares/maxValor)*100}%">
+                            <span class="text-xs text-white font-bold">${concursosMaioriaImpares}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-20 text-sm text-gray-600 dark:text-gray-400">Equilibrados:</div>
+                    <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-6 mx-3">
+                        <div class="bg-yellow-500 h-6 rounded-full flex items-center justify-end pr-2" style="width: ${(concursosEquilibrados/maxValor)*100}%">
+                            <span class="text-xs text-white font-bold">${concursosEquilibrados}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Padrões mais comuns
+            const padroesOrdenados = Object.entries(padroesCombinacoes)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 10);
+
+            let padroesMaisComuns = '<div class="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">';
+            padroesOrdenados.forEach(([padrao, count]) => {
+                const perc = ((count / totalConcursos) * 100).toFixed(1);
+                padroesMaisComuns += `
+                    <div class="bg-gray-100 dark:bg-gray-700 p-2 rounded text-center">
+                        <div class="font-bold text-sm">${padrao}</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">${count}x (${perc}%)</div>
+                    </div>
+                `;
+            });
+            padroesMaisComuns += '</div>';
+
+            // Análises e insights
+            let insights = '';
+            if (concursosMaioriaPares > concursosMaioriaImpares) {
+                const diferenca = concursosMaioriaPares - concursosMaioriaImpares;
+                insights += `<p><strong>🔍 Tendência:</strong> Há uma ligeira tendência para concursos com maioria de números pares (${diferenca} concursos a mais).</p>`;
+            } else if (concursosMaioriaImpares > concursosMaioriaPares) {
+                const diferenca = concursosMaioriaImpares - concursosMaioriaPares;
+                insights += `<p><strong>🔍 Tendência:</strong> Há uma ligeira tendência para concursos com maioria de números ímpares (${diferenca} concursos a mais).</p>`;
+            } else {
+                insights += `<p><strong>🔍 Equilíbrio:</strong> Os concursos estão perfeitamente equilibrados entre maioria pares e ímpares.</p>`;
+            }
+
+            const padraoMaisComum = padroesOrdenados[0];
+            if (padraoMaisComum) {
+                insights += `<p><strong>📊 Padrão mais comum:</strong> ${padraoMaisComum[0]} apareceu em ${padraoMaisComum[1]} concursos (${((padraoMaisComum[1]/totalConcursos)*100).toFixed(1)}%).</p>`;
+            }
+
+            if (concursosEquilibrados > 0) {
+                insights += `<p><strong>⚖️ Concursos equilibrados:</strong> ${concursosEquilibrados} concursos tiveram exatamente a mesma quantidade de pares e ímpares.</p>`;
+            }
+
+            // Insight específico da Lotofácil
+            insights += `<p><strong>🌸 Especial Lotofácil:</strong> Com 15 números sorteados entre 1-25, a distribuição par/ímpar tende a ser mais variada que outras modalidades.</p>`;
+
+            padroesDiv.innerHTML = padroesMaisComuns + insights;
+
+            // Mostrar estatísticas por posição apenas quando "Ordenar dezenas crescente" está desmarcado
+            // Para Lotofácil, limitamos a exibição para não sobrecarregar a tela
+            if (!ordenarCrescente.checked) {
+                const estatisticasPorPosicao = calcularEstatisticasPorPosicao();
+                
+                let cardsPosicoesHTML = '';
+                // Mostrar apenas as primeiras 10 posições para não sobrecarregar
+                for (let pos = 1; pos <= 10; pos++) {
+                    const dados = estatisticasPorPosicao[pos];
+                    const percMais = ((dados.mais.freq / totalConcursos) * 100).toFixed(1);
+                    const percMenos = ((dados.menos.freq / totalConcursos) * 100).toFixed(1);
+                    
+                    cardsPosicoesHTML += `
+                        <div class="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900 dark:to-rose-900 p-3 rounded-lg border border-pink-200 dark:border-pink-700">
+                            <h5 class="font-bold text-center text-pink-800 dark:text-pink-200 mb-2 text-sm">🌸 ${pos}º</h5>
+                            <div class="space-y-1">
+                                <div class="bg-pink-100 dark:bg-pink-800 p-2 rounded">
+                                    <div class="text-center">
+                                        <div class="text-base font-bold text-pink-700 dark:text-pink-200">${dados.mais.numero}</div>
+                                        <div class="text-xs text-pink-600 dark:text-pink-300">Mais</div>
+                                        <div class="text-xs text-pink-500 dark:text-pink-400">${dados.mais.freq}x</div>
+                                    </div>
+                                </div>
+                                <div class="bg-red-100 dark:bg-red-800 p-2 rounded">
+                                    <div class="text-center">
+                                        <div class="text-base font-bold text-red-700 dark:text-red-200">${dados.menos.numero}</div>
+                                        <div class="text-xs text-red-600 dark:text-red-300">Menos</div>
+                                        <div class="text-xs text-red-500 dark:text-red-400">${dados.menos.freq}x</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                dadosPosicoes.innerHTML = cardsPosicoesHTML + 
+                    '<div class="col-span-full text-center text-sm text-gray-600 dark:text-gray-400 mt-4">⚠️ Mostrando apenas as primeiras 10 posições (de 15 total)</div>';
+                estatisticasPosicaoDiv.classList.remove('hidden');
+            } else {
+                estatisticasPosicaoDiv.classList.add('hidden');
+            }
+
+            // Gerar análise visual apenas quando "Ordenar dezenas crescente" está desmarcado
+            if (!ordenarCrescente.checked) {
+                const jogos = parseInt(document.getElementById('jogosAnalisar').value) || 30;
+                if (todosResultados.length >= jogos) {
+                    gerarAnaliseVisual(jogos);
+                }
+            } else {
+                document.getElementById('analiseVisual').classList.add('hidden');
+            }
+
+            resumoDiv.classList.remove('hidden');
+        }
+
+        // Função para gerar análise visual dos números que saíram por posição
+        function gerarAnaliseVisual(jogosAnalisar = 30) {
+            console.log('🔥🔥🔥 COMEÇANDO gerarAnaliseVisual Lotofácil - jogos:', jogosAnalisar);
+            console.log('🔥 todosResultados.length:', todosResultados.length);
+            
+            if (todosResultados.length < jogosAnalisar) {
+                console.log(`❌ Dados insuficientes. Necessário: ${jogosAnalisar}, Disponível: ${todosResultados.length}`);
+                return;
+            }
+
+            // Pegar os últimos X concursos ordenados por número (mais recentes)
+            const ultimosConcursos = [...todosResultados]
+                .sort((a, b) => b.numero - a.numero) // Ordem decrescente
+                .slice(0, jogosAnalisar); // Últimos X jogos
+
+            console.log(`✅✅✅ Analisando últimos ${jogosAnalisar} concursos: ${ultimosConcursos[0].numero} até ${ultimosConcursos[jogosAnalisar-1].numero}`);
+
+            // ✅ ANALISAR QUAIS NÚMEROS APARECERAM EM CADA POSIÇÃO
+            const numerosQueApareceram = {};
+            
+            // Para cada posição (1º-15º)
+            for (let pos = 1; pos <= 15; pos++) {
+                numerosQueApareceram[pos] = new Set();
+                
+                ultimosConcursos.forEach((concurso, index) => {
+                    if (concurso.dezenasSorteadasOrdemSorteio && 
+                        concurso.dezenasSorteadasOrdemSorteio[pos - 1]) {
+                        
+                        // 🔥 CONVERTER STRING PARA NUMBER
+                        const numero = parseInt(concurso.dezenasSorteadasOrdemSorteio[pos - 1]);
+                        numerosQueApareceram[pos].add(numero);
+                        
+                        // Debug primeiros 3 concursos
+                        if (index < 3 && pos <= 5) {
+                            console.log(`   Concurso ${concurso.numero} - ${pos}º: ${numero} (convertido)`);
+                        }
+                    } else if (index < 3 && pos <= 5) {
+                        console.log(`❌ Concurso ${concurso.numero} - ${pos}º: SEM DADOS`);
+                    }
+                });
+            }
+            
+            // 🔥🔥🔥 MOSTRAR RESULTADO COLETADO (apenas primeiras 5 posições no log)
+            for (let pos = 1; pos <= 5; pos++) {
+                const numerosArray = Array.from(numerosQueApareceram[pos]).sort((a,b) => a-b);
+                console.log(`🎯🎯🎯 ${pos}º POSIÇÃO - Total: ${numerosArray.length} números únicos`);
+                console.log(`🎯🎯🎯 ${pos}º POSIÇÃO - Lista: [${numerosArray.join(', ')}]`);
+            }
+
+            // 🔥 GERAR TABELA PERSONALIZADA - Números que SAÍRAM (mostrar apenas primeiras 10 posições)
+            const tabela = document.getElementById('tabelaAnaliseVisual');
+            
+            let html = `
+                <thead style="background-color: #f3bef3;">
+                    <tr>
+                        <th class="px-2 py-2 text-center text-xs font-bold border" style="color: #410c41; border-color: #db3ddb;">
+                            Nº
+                        </th>`;
+            
+            // Cabeçalhos para as primeiras 10 posições
+            for (let pos = 1; pos <= 10; pos++) {
+                html += `
+                    <th class="px-2 py-2 text-center text-xs font-bold border" style="color: #410c41; border-color: #db3ddb;">
+                        ${pos}º
+                    </th>`;
+            }
+            
+            html += `
+                    </tr>
+                </thead>
+                <tbody class="bg-white dark:bg-gray-800">
+            `;
+
+            // Para cada número de 1 a 25
+            for (let num = 1; num <= 25; num++) {
+                html += `<tr style="&:hover { background-color: #fbe9fb; }">`;
+                
+                // Número da linha
+                html += `
+                    <td class="px-2 py-2 text-center font-bold text-gray-700 dark:text-gray-300 border" style="background-color: #efa9ef; border-color: #db3ddb;">
+                        ${num}
+                    </td>
+                `;
+                
+                // Para cada posição (apenas primeiras 10)
+                for (let pos = 1; pos <= 10; pos++) {
+                    const saiu = numerosQueApareceram[pos].has(num);
+                    html += `
+                        <td class="px-2 py-2 text-center border" style="border-color: #db3ddb;">
+                            ${saiu ? '✅' : ''}
+                        </td>
+                    `;
+                }
+                
+                html += `</tr>`;
+            }
+
+            html += '</tbody>';
+            tabela.innerHTML = html;
+
+            // Gerar resumo estatístico (apenas primeiras 10 posições)
+            const resumo = document.getElementById('resumoAnaliseVisual');
+            let resumoHTML = '';
+            
+            for (let pos = 1; pos <= 10; pos++) {
+                const totalSaiu = numerosQueApareceram[pos].size;
+                const totalFaltando = 25 - totalSaiu;
+                
+                resumoHTML += `
+                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg border border-pink-300 dark:border-pink-600 text-center">
+                        <div class="text-xs font-medium text-pink-700 dark:text-pink-300 mb-1">${pos}º</div>
+                        <div class="text-sm font-bold text-pink-600 dark:text-pink-400">${totalSaiu}/25</div>
+                        <div class="text-xs text-pink-500 dark:text-pink-400">${totalFaltando} falta</div>
+                    </div>
+                `;
+            }
+            
+            resumo.innerHTML = resumoHTML;
+
+            // ✅ GERAR TABELA AZUL - Números que NÃO saíram por posição (apenas primeiras 10)
+            const numerosFaltandoPorPosicao = {};
+            
+            // Para cada posição (apenas primeiras 10), calcular quais números NÃO apareceram
+            for (let pos = 1; pos <= 10; pos++) {
+                const numerosFaltando = [];
+                
+                // Verificar cada número de 1-25
+                for (let num = 1; num <= 25; num++) {
+                    if (!numerosQueApareceram[pos].has(num)) {
+                        numerosFaltando.push(num);
+                    }
+                }
+                
+                numerosFaltandoPorPosicao[pos] = numerosFaltando.sort((a, b) => a - b);
+                console.log(`🔵 ${pos}º Posição - Números que NÃO saíram: [${numerosFaltando.join(', ')}]`);
+            }
+            
+            // Gerar HTML da tabela azul
+            const tabelaNumerosNaoSairam = document.getElementById('tabelaNumerosNaoSairam');
+            const maxNumerosFaltando = Math.max(...Object.values(numerosFaltandoPorPosicao).map(arr => arr.length));
+            
+            if (maxNumerosFaltando === 0) {
+                tabelaNumerosNaoSairam.innerHTML = `
+                    <tr>
+                        <td colspan="10" class="px-3 py-4 text-center font-medium text-pink-600 dark:text-pink-400 border border-blue-300 dark:border-blue-600">
+                            ✅ Todos os números de 1-25 saíram nas primeiras 10 posições nos últimos ${jogosAnalisar} jogos!
+                        </td>
+                    </tr>
+                `;
+            } else {
+                let htmlNaoSairam = '';
+                
+                for (let linha = 0; linha < maxNumerosFaltando; linha++) {
+                    htmlNaoSairam += '<tr>';
+                    
+                    for (let pos = 1; pos <= 10; pos++) {
+                        const numerosFaltando = numerosFaltandoPorPosicao[pos];
+                        const numero = linha < numerosFaltando.length ? numerosFaltando[linha] : '';
+                        
+                        htmlNaoSairam += `
+                            <td class="px-2 py-2 text-center font-medium text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">
+                                ${numero}
+                            </td>
+                        `;
+                    }
+                    
+                    htmlNaoSairam += '</tr>';
+                }
+                
+                tabelaNumerosNaoSairam.innerHTML = htmlNaoSairam;
+            }
+            
+            // Atualizar elemento de jogos escolhidos
+            document.getElementById('jogosEscolhidos').textContent = jogosAnalisar;
+
+            // Mostrar análise visual
+            document.getElementById('analiseVisual').classList.remove('hidden');
+        }
+
+        // Event listeners para análise visual
+        document.getElementById('atualizarAnalise').addEventListener('click', () => {
+            const jogos = parseInt(document.getElementById('jogosAnalisar').value) || 30;
+            if (jogos < 1 || jogos > 100) {
+                // Usar modal personalizada ao invés de alert
+                mostrarModal('Erro', 'Por favor, insira um valor entre 1 e 100 jogos.');
+                return;
+            }
+            if (todosResultados.length < jogos) {
+                mostrarModal('Dados Insuficientes', `Não há dados suficientes. Disponível: ${todosResultados.length} jogos, Solicitado: ${jogos}`);
+                return;
+            }
+            gerarAnaliseVisual(jogos);
+        });
+
+        // Enter no campo de jogos a analisar
+        document.getElementById('jogosAnalisar').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('atualizarAnalise').click();
+            }
+        });
+
+        // Função para mostrar modal personalizada
+        function mostrarModal(titulo, mensagem) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">${titulo}</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">${mensagem}</p>
+                    <div class="flex justify-end">
+                        <button class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded" onclick="this.closest('.fixed').remove()">OK</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Event listener para toggle da tabela
+        document.getElementById('toggleTabelaBtn').addEventListener('click', () => {
+            const resultados = document.getElementById('resultados');
+            const toggleBtn = document.getElementById('toggleTabelaBtn');
+            
+            if (resultados.classList.contains('hidden')) {
+                // Mostrar tabela
+                resultados.classList.remove('hidden');
+                toggleBtn.textContent = '👁️ Ocultar Tabela de Resultados';
+                toggleBtn.className = 'bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200';
+            } else {
+                // Ocultar tabela
+                resultados.classList.add('hidden');
+                toggleBtn.textContent = '👁️ Mostrar Tabela de Resultados';
+                toggleBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200';
+            }
+        });
+
+        // 🚀 CARREGAR TODOS OS CONCURSOS AUTOMATICAMENTE AO ABRIR A APP
+        document.addEventListener('DOMContentLoaded', async () => {
+            carregarTodosOsConcursos();
+        });
+    </script>
+</body>
+</html>
