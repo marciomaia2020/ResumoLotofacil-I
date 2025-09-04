@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados Lotofácil</title>
+    <title>Resultados Lotofácil - Análise Inteligente</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#7d177d',
-                        'primary-light': '#971c97',
-                        'primary-dark': '#6c146c',
-                        'light-bg': '#fbe9fb',
-                        'dark-bg': '#2b082b',
+                        primary: '#672666',
+                        'primary-light': '#823081',
+                        'primary-dark': '#5d225c',
+                        'light-bg': '#f8ecf8',
+                        'dark-bg': '#250e25',
                         'custom-100': '#ffffff',
-                        'custom-95': '#fbe9fb',
-                        'custom-90': '#f7d4f7',
-                        'custom-85': '#f3bef3',
-                        'custom-80': '#efa9ef',
-                        'custom-75': '#eb93eb',
-                        'custom-70': '#e77ee7',
-                        'custom-65': '#e368e3',
-                        'custom-60': '#df53df',
-                        'custom-55': '#db3ddb',
-                        'custom-50': '#d728d7',
-                        'custom-45': '#c224c2',
-                        'custom-40': '#ac20ac',
-                        'custom-35': '#971c97',
-                        'custom-30': '#811881',
-                        'custom-29': '#7d177d',
-                        'custom-25': '#6c146c',
-                        'custom-20': '#561056',
-                        'custom-15': '#410c41',
-                        'custom-10': '#2b082b',
-                        'custom-5': '#160416',
+                        'custom-95': '#f8ecf8',
+                        'custom-90': '#f1daf1',
+                        'custom-85': '#eac7ea',
+                        'custom-80': '#e3b5e3',
+                        'custom-75': '#dda2dc',
+                        'custom-70': '#d68fd5',
+                        'custom-65': '#cf7dcd',
+                        'custom-60': '#c86ac6',
+                        'custom-55': '#c157bf',
+                        'custom-50': '#ba45b8',
+                        'custom-45': '#a83ea6',
+                        'custom-40': '#953793',
+                        'custom-35': '#823081',
+                        'custom-30': '#70296f',
+                        'custom-28': '#672666',
+                        'custom-25': '#5d225c',
+                        'custom-20': '#4a1c4a',
+                        'custom-15': '#381537',
+                        'custom-10': '#250e25',
+                        'custom-5': '#130712',
                         'custom-0': '#000000'
                     }
                 }
@@ -57,33 +57,33 @@
         .loading-circle {
             width: 100px;
             height: 100px;
-            background-image: linear-gradient(#fbe9fb, #7d177d, #410c41);
+            background-image: linear-gradient(#f8ecf8, #672666, #381537);
             border-radius: 50%;
             animation: pulse 3s infinite;
         }
         
         .numero-par {
-            background-color: #f3bef3;
-            color: #410c41;
+            background-color: #eac7ea;
+            color: #381537;
             border-radius: 6px;
             font-weight: 600;
         }
         
         .numero-impar {
-            background-color: #db3ddb;
-            color: #160416;
+            background-color: #c157bf;
+            color: #130712;
             border-radius: 6px;
             font-weight: 600;
         }
         
         .dark .numero-par {
-            background-color: #410c41;
-            color: #f3bef3;
+            background-color: #381537;
+            color: #eac7ea;
         }
         
         .dark .numero-impar {
-            background-color: #6c146c;
-            color: #f7d4f7;
+            background-color: #5d225c;
+            color: #f1daf1;
         }
 
         .numero-eliminado {
@@ -99,15 +99,15 @@
         }
 
         .numero-disponivel {
-            background-color: #db3ddb;
-            color: #160416;
-            border: 2px solid #7d177d;
+            background-color: #c157bf;
+            color: #130712;
+            border: 2px solid #672666;
         }
 
         .dark .numero-disponivel {
-            background-color: #410c41;
-            color: #db3ddb;
-            border: 2px solid #6c146c;
+            background-color: #381537;
+            color: #c157bf;
+            border: 2px solid #5d225c;
         }
 
         .numero-palpite {
@@ -155,8 +155,26 @@
         }
         
         .filtro-ativo {
-            background-color: #7d177d;
+            background-color: #672666;
             color: white;
+        }
+
+        .numero-frequente {
+            background-color: #10b981;
+            color: white;
+            border: 2px solid #059669;
+        }
+
+        .numero-raro {
+            background-color: #f59e0b;
+            color: white;
+            border: 2px solid #d97706;
+        }
+
+        .numero-medio {
+            background-color: #6366f1;
+            color: white;
+            border: 2px solid #4f46e5;
         }
     </style>
 </head>
@@ -165,10 +183,10 @@
         <!-- Header -->
         <div class="text-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                🌸 Resultados Lotofácil - ORDEM DE SORTEIO
+                🌸 Resultados Lotofácil - ANÁLISE INTELIGENTE
             </h1>
             <p class="text-gray-600 dark:text-gray-300">
-                Resultados oficiais da Caixa Econômica Federal - DO PRIMEIRO AO ÚLTIMO CONCURSO
+                Dados oficiais da Caixa Econômica Federal com estratégias baseadas em estatísticas reais
             </p>
         </div>
 
@@ -211,12 +229,12 @@
                     <label class="flex items-center">
                         <input type="checkbox" id="destacarPares" class="mr-2" checked>
                         <span class="text-gray-700 dark:text-gray-300">Pares</span>
-                        <div class="w-4 h-4 ml-2 rounded border" style="background-color: #f3bef3;"></div>
+                        <div class="w-4 h-4 ml-2 rounded border" style="background-color: #eac7ea;"></div>
                     </label>
                     <label class="flex items-center">
                         <input type="checkbox" id="destacarImpares" class="mr-2" checked>
                         <span class="text-gray-700 dark:text-gray-300">Ímpares</span>
-                        <div class="w-4 h-4 ml-2 rounded border" style="background-color: #db3ddb;"></div>
+                        <div class="w-4 h-4 ml-2 rounded border" style="background-color: #c157bf;"></div>
                     </label>
                     
                     <!-- Divisor -->
@@ -242,7 +260,7 @@
         <div id="loading" class="hidden text-center py-8">
             <div class="loading-circle mx-auto mb-4"></div>
             <p id="loadingText" class="text-gray-600 dark:text-gray-300 mb-4">
-                Carregando TODOS os resultados do primeiro ao último concurso...
+                Carregando dados da API da Caixa Econômica Federal...
             </p>
             
             <!-- Barra de progresso -->
@@ -267,6 +285,20 @@
             <span id="erroMsg"></span>
         </div>
 
+        <!-- Status da API -->
+        <div id="statusApi" class="hidden mb-4 p-4 rounded-lg border">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="font-semibold text-sm">🌐 Status da API da Caixa</h3>
+                    <p id="statusTexto" class="text-xs mt-1"></p>
+                </div>
+                <div id="ultimoConcursoInfo" class="text-right">
+                    <div class="text-sm font-bold">Último Concurso: <span id="numeroUltimoConcurso">-</span></div>
+                    <div class="text-xs" id="dataUltimoConcurso">-</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Botão Toggle Tabela -->
         <div id="toggleTabelaContainer" class="hidden mb-4 text-center">
             <button 
@@ -280,8 +312,8 @@
         <!-- Tabela de Resultados -->
         <div id="resultados" class="hidden">
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                <div class="text-white p-4" style="background: linear-gradient(to right, #7d177d, #971c97);">
-                    <h2 class="text-xl font-bold text-center">LOTOFÁCIL - TODOS OS CONCURSOS</h2>
+                <div class="text-white p-4" style="background: linear-gradient(to right, #672666, #823081);">
+                    <h2 class="text-xl font-bold text-center">LOTOFÁCIL - DADOS OFICIAIS DA CAIXA</h2>
                 </div>
                 
                 <div class="overflow-x-auto">
@@ -399,7 +431,7 @@
                 <div class="bg-gray-50 dark:bg-gray-700 px-4 py-3">
                     <div class="flex flex-col sm:flex-row justify-between items-center">
                         <p class="text-sm text-gray-600 dark:text-gray-300">
-                            📊 Fonte: Caixa Econômica Federal - API Oficial
+                            📊 Fonte: API Oficial da Caixa Econômica Federal
                         </p>
                         <p id="contadorResultados" class="text-sm font-medium text-primary-dark dark:text-primary-light">
                             <!-- Contador será inserido aqui -->
@@ -410,123 +442,38 @@
         </div>
 
         <!-- Resumo Estatístico -->
-        <div id="resumoEstatistico" class="hidden mt-8 rounded-lg p-6" style="background: linear-gradient(to right, #fbe9fb, #f7d4f7); border: 1px solid #e368e3;">
-            <h3 class="text-xl font-bold mb-6 text-center" style="color: #410c41;">
-                📊 Resumo Estatístico Par/Ímpar
+        <div id="resumoEstatistico" class="hidden mt-8 rounded-lg p-6" style="background: linear-gradient(to right, #f8ecf8, #f1daf1); border: 1px solid #cf7dcd;">
+            <h3 class="text-xl font-bold mb-6 text-center" style="color: #381537;">
+                📊 Análise Estatística Baseada em Dados Reais
             </h3>
             <div id="estatisticasGerais" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Estatísticas serão inseridas aqui -->
             </div>
             
+            <!-- Frequência dos Números -->
+            <div class="mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
+                    🎯 Frequência dos Números (Últimos 50 Concursos)
+                </h4>
+                <div id="frequenciaNumerosGrid" class="grid grid-cols-5 gap-2">
+                    <!-- Grid de frequência será inserido aqui -->
+                </div>
+            </div>
+            
             <!-- Gráfico visual simples -->
             <div class="mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg">
                 <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
-                    🎯 Distribuição de Padrões
+                    🎯 Distribuição de Padrões Par/Ímpar
                 </h4>
                 <div id="graficoBarras" class="space-y-3">
                     <!-- Gráfico de barras será inserido aqui -->
                 </div>
             </div>
             
-            <!-- Estatísticas por posição (só quando ordem original) -->
-            <div id="estatisticasPosicao" class="hidden mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg">
-                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
-                    🎯 Estatísticas por Posição (Ordem Original do Sorteio)
-                </h4>
-                <div id="dadosPosicoes" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                    <!-- Dados por posição serão inseridos aqui -->
-                </div>
-            </div>
-
-            <!-- Análise Visual por Posição -->
-            <div id="analiseVisual" class="hidden mt-6 p-4 rounded-lg" style="background: linear-gradient(to bottom right, #f7d4f7, #efa9ef); border: 1px solid #db3ddb;">
-                <h4 class="text-lg font-semibold mb-3 text-center" style="color: #410c41;">
-                    📊 Análise Visual - Números que Saíram por Posição
-                </h4>
-                
-                <!-- Controle de jogos a analisar -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-                    <label class="text-sm font-medium" style="color: #561056;">
-                        Analisar últimos:
-                    </label>
-                    <input 
-                        type="number" 
-                        id="jogosAnalisar" 
-                        value="30"
-                        min="1"
-                        max="100"
-                        placeholder="Nº de jogos"
-                        class="px-3 py-2 text-base border rounded-lg focus:ring-2 dark:bg-gray-700 dark:text-white w-24"
-                        style="border-color: #db3ddb; --tw-ring-color: #7d177d;"
-                    >
-                    <span class="text-sm" style="color: #561056;">jogos mais recentes</span>
-                    <button 
-                        id="atualizarAnalise" 
-                        class="text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm"
-                        style="background-color: #7d177d;"
-                        onmouseover="this.style.backgroundColor='#6c146c'"
-                        onmouseout="this.style.backgroundColor='#7d177d'"
-                    >
-                        🔄 Atualizar
-                    </button>
-                </div>
-                
-                <p class="text-sm text-center mb-4" style="color: #561056;">
-                    ✅ = Número saiu nesta posição | Em branco = Número NÃO saiu
-                </p>
-                
-                <!-- Tabela visual -->
-                <div class="overflow-x-auto">
-                    <table id="tabelaAnaliseVisual" class="w-full rounded-lg" style="border: 1px solid #db3ddb;">
-                        <!-- Tabela será gerada dinamicamente -->
-                    </table>
-                </div>
-                
-                <!-- Resumo estatístico -->
-                <div id="resumoAnaliseVisual" class="mt-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-2">
-                    <!-- Resumo será inserido aqui -->
-                </div>
-                
-                <!-- Números que NÃO saíram por posição -->
-                <div class="mt-6 p-4 bg-blue-100 dark:bg-blue-800 rounded-lg">
-                    <p class="text-sm font-medium text-blue-800 dark:text-blue-200 mb-3 text-center">
-                        NÚMEROS QUE NÃO SAÍRAM NOS ÚLTIMOS <span id="jogosEscolhidos">30</span> JOGOS POR POSIÇÃO:
-                    </p>
-                    
-                    <!-- Aviso sobre muitas posições -->
-                    <p class="text-xs text-blue-700 dark:text-blue-300 text-center mb-3">
-                        ⚠️ Mostrando apenas as primeiras 10 posições (de 15 total) para melhor visualização
-                    </p>
-                    
-                    <!-- Tabela dos números que faltam por posição -->
-                    <div class="overflow-x-auto">
-                        <table class="w-full border border-blue-300 dark:border-blue-600 rounded-lg bg-white dark:bg-gray-800">
-                            <thead class="bg-blue-200 dark:bg-blue-700">
-                                <tr>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">1º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">2º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">3º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">4º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">5º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">6º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">7º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">8º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">9º</th>
-                                    <th class="px-2 py-2 text-center text-xs font-bold text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">10º</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabelaNumerosNaoSairam" class="bg-blue-50 dark:bg-blue-900">
-                                <!-- Números que não saíram por posição serão inseridos aqui -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
             <!-- Padrões encontrados -->
             <div class="mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg">
                 <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
-                    🔍 Padrões Identificados
+                    🔍 Insights Baseados em Dados Reais
                 </h4>
                 <div id="padroes" class="text-sm text-gray-700 dark:text-gray-300">
                     <!-- Padrões serão inseridos aqui -->
@@ -541,7 +488,7 @@
                     🌸 Gerador de Palpites Inteligente
                 </h3>
                 <p class="text-purple-600 dark:text-purple-300 text-sm">
-                    Estratégias baseadas em eliminação de números dos últimos concursos
+                    Estratégias baseadas em análise estatística de dados oficiais da Caixa
                 </p>
                 <button 
                     id="comoFuncionaBtn" 
@@ -582,12 +529,12 @@
                             id="quantidadeJogos1" 
                             value="1"
                             min="1"
-                            max="10"
+                            max="3"
                             step="1"
                             class="px-3 py-1 text-base border border-green-300 dark:border-green-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent dark:bg-gray-700 dark:text-white w-20 text-center"
                         />
                         <span class="text-xs text-green-600 dark:text-green-400 block mt-1">
-                            Máx: 10 jogos únicos (números únicos)
+                            Máx: 3 jogos (números únicos disponíveis)
                         </span>
                     </div>
                     
@@ -604,29 +551,38 @@
                     </div>
                 </div>
 
-                <!-- Estratégia 2: Eliminação Progressiva -->
+                <!-- Estratégia 2: Baseada em Frequência -->
                 <div class="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
                     <h4 class="text-lg font-bold text-blue-800 dark:text-blue-200 mb-3 text-center">
-                        🔄 Estratégia 2: Eliminação Progressiva
+                        📊 Estratégia 2: Baseada em Frequência
                     </h4>
                     <p class="text-sm text-blue-700 dark:text-blue-300 mb-4 text-center">
-                        Elimina números usados a cada sequência
+                        Equilibra números frequentes, médios e raros
                     </p>
-                    <div class="text-center space-y-2">
-                        <div id="statusProgressivo" class="text-xs text-blue-600 dark:text-blue-400">
-                            Sequência: 1/10 | Disponíveis: 10
-                        </div>
+                    
+                    <div class="mb-4 text-center">
+                        <label class="text-sm font-medium text-blue-700 dark:text-blue-300 block mb-2">
+                            Analisar últimos:
+                        </label>
+                        <input 
+                            type="number" 
+                            id="periodosAnalise" 
+                            value="50"
+                            min="20"
+                            max="100"
+                            class="px-3 py-1 text-base border border-blue-300 dark:border-blue-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white w-20 text-center"
+                        >
+                        <span class="text-xs text-blue-600 dark:text-blue-400 block mt-1">
+                            concursos
+                        </span>
+                    </div>
+                    
+                    <div class="text-center">
                         <button 
                             id="gerarEstrategia2" 
                             class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors disabled:opacity-50"
                         >
-                            🔄 Próxima Sequência
-                        </button>
-                        <button 
-                            id="resetEstrategia2" 
-                            class="bg-red-500 hover:bg-red-600 text-white text-sm py-1 px-3 rounded transition-colors"
-                        >
-                            🔄 Reset
+                            📊 Gerar Palpite
                         </button>
                     </div>
                     <div id="resultadoEstrategia2" class="mt-4 hidden">
@@ -634,13 +590,13 @@
                     </div>
                 </div>
 
-                <!-- Estratégia 3: Eliminação Livre -->
+                <!-- Estratégia 3: Combinação Inteligente -->
                 <div class="bg-purple-50 dark:bg-purple-900 border border-purple-200 dark:border-purple-700 rounded-lg p-4">
                     <h4 class="text-lg font-bold text-purple-800 dark:text-purple-200 mb-3 text-center">
-                        🎰 Estratégia 3: Eliminação Livre
+                        🎰 Estratégia 3: Combinação Inteligente
                     </h4>
                     <p class="text-sm text-purple-700 dark:text-purple-300 mb-4 text-center">
-                        Elimina apenas os 15 números do último concurso (permite repetir números entre jogos)
+                        Elimina último concurso + equilibra por faixas
                     </p>
                     
                     <!-- Controles de quantidade -->
@@ -653,11 +609,11 @@
                             id="quantidadeJogos3" 
                             value="5"
                             min="1"
-                            max="50"
+                            max="10"
                             class="px-3 py-1 text-base border border-purple-300 dark:border-purple-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white w-20 text-center"
                         >
                         <span class="text-xs text-purple-600 dark:text-purple-400 block mt-1">
-                            Máx: 50 jogos (permite repetição)
+                            Máx: 10 jogos variados
                         </span>
                     </div>
                     
@@ -678,24 +634,8 @@
             <!-- Visualização dos Números -->
             <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-6">
                 <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center">
-                    🔍 Status dos Números (1-25)
+                    🔍 Status dos Números (1-25) - Baseado em Dados Reais
                 </h4>
-                
-                <!-- Controle de Números Sorteados -->
-                <div id="controleNumerosSorteados" class="mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg hidden">
-                    <div class="flex justify-between items-center mb-2">
-                        <div class="text-sm font-medium text-orange-800">
-                            🎯 Números já sorteados: <span id="numerosSorteadosLista" class="font-bold"></span>
-                        </div>
-                        <label class="flex items-center text-sm">
-                            <input type="checkbox" id="permitirNumerosSorteados" class="mr-2">
-                            <span class="text-orange-700">Permitir usar números já sorteados</span>
-                        </label>
-                    </div>
-                    <div class="text-xs text-orange-600">
-                        Por padrão, números que saíram no último concurso estão <strong>desabilitados</strong> para evitar repetições.
-                    </div>
-                </div>
                 
                 <!-- Grid de Números Visual -->
                 <div class="mb-4">
@@ -704,23 +644,23 @@
                     </div>
                 </div>
                 
-                <!-- Números Eliminados -->
-                <div class="mb-4">
-                    <h5 class="text-sm font-medium text-red-600 dark:text-red-400 mb-2">
-                        ❌ Números Eliminados:
-                    </h5>
-                    <div id="numerosEliminados" class="flex flex-wrap gap-2">
-                        <!-- Números eliminados serão inseridos aqui -->
+                <!-- Legenda -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-green-500 rounded mr-2"></div>
+                        <span>Frequente</span>
                     </div>
-                </div>
-
-                <!-- Números Disponíveis -->
-                <div>
-                    <h5 class="text-sm font-medium text-green-600 dark:text-green-400 mb-2">
-                        ✅ Números Disponíveis:
-                    </h5>
-                    <div id="numerosDisponiveis" class="flex flex-wrap gap-2">
-                        <!-- Números disponíveis serão inseridos aqui -->
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
+                        <span>Médio</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-yellow-500 rounded mr-2"></div>
+                        <span>Raro</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-red-500 rounded mr-2"></div>
+                        <span>Último sorteio</span>
                     </div>
                 </div>
             </div>
@@ -751,7 +691,7 @@
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-4xl w-full mx-4 max-h-screen overflow-y-auto">
                 <div class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white p-6 rounded-t-lg">
                     <h2 class="text-2xl font-bold text-center">
-                        🌸 Como Funciona o Gerador de Palpites - Lotofácil
+                        🌸 Gerador Inteligente - Baseado em Dados Reais da Caixa
                     </h2>
                 </div>
                 
@@ -762,82 +702,47 @@
                             🌸 Estratégia 1: Eliminação Simples
                         </h3>
                         <div class="space-y-3 text-green-700 dark:text-green-300">
-                            <p><strong>Conceito:</strong> Remove apenas os 15 números que saíram no último concurso.</p>
-                            <p><strong>Lógica:</strong> A chance dos mesmos 15 números saírem novamente é extremamente baixa.</p>
-                            <div class="bg-white dark:bg-gray-800 p-3 rounded border-l-4 border-green-500">
-                                <p class="font-medium mb-2">Exemplo prático:</p>
-                                <p>• <span class="font-bold">Último concurso:</span> [01, 02, 05, 07, 10, 11, 12, 14, 16, 17, 18, 20, 22, 23, 25]</p>
-                                <p>• <span class="font-bold">Números eliminados:</span> 01, 02, 05, 07, 10, 11, 12, 14, 16, 17, 18, 20, 22, 23, 25</p>
-                                <p>• <span class="font-bold">Disponíveis:</span> 10 números (03, 04, 06, 08, 09, 13, 15, 19, 21, 24)</p>
-                                <p>• <span class="font-bold">Resultado:</span> 1 jogo com esses 10 números únicos restantes</p>
-                            </div>
+                            <p><strong>Conceito:</strong> Remove apenas os 15 números que saíram no último concurso oficial.</p>
+                            <p><strong>Lógica:</strong> Estatisticamente, é extremamente raro os mesmos 15 números saírem consecutivamente.</p>
+                            <p><strong>Vantagem:</strong> Deixa 10 números disponíveis (25-15=10) para formar novos jogos únicos.</p>
                         </div>
                     </div>
 
                     <!-- Estratégia 2 -->
                     <div class="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
                         <h3 class="text-xl font-bold text-blue-800 dark:text-blue-200 mb-3">
-                            🔄 Estratégia 2: Eliminação Progressiva
+                            📊 Estratégia 2: Baseada em Frequência
                         </h3>
                         <div class="space-y-3 text-blue-700 dark:text-blue-300">
-                            <p><strong>Conceito:</strong> Gera múltiplas sequências eliminando números já usados a cada rodada.</p>
-                            <p><strong>Lógica:</strong> Maximiza as chances cobrindo diferentes combinações sem repetir números.</p>
-                            <div class="bg-white dark:bg-gray-800 p-3 rounded border-l-4 border-blue-500">
-                                <p class="font-medium mb-2">Fluxo completo:</p>
-                                <div class="space-y-2 text-sm">
-                                    <p>• <span class="font-bold text-red-600">Último concurso:</span> 15 números eliminados ❌</p>
-                                    <p>• <span class="font-bold text-green-600">1ª Sequência:</span> 10 disponíveis → 1 jogo com 10 números ❌</p>
-                                    <p>• <span class="font-bold text-orange-600">2ª+ Sequências:</span> Reinício automático (apenas 10 restantes)</p>
-                                    <p>• <span class="font-bold text-purple-600">Especial Lotofácil:</span> Com apenas 25 números, a progressão é mais limitada</p>
-                                </div>
-                            </div>
+                            <p><strong>Conceito:</strong> Analisa a frequência real de cada número nos últimos N concursos.</p>
+                            <p><strong>Método:</strong> Equilibra números frequentes (que saem muito), médios e raros (que saem pouco).</p>
+                            <p><strong>Inteligência:</strong> Usa estatísticas reais da API da Caixa para gerar combinações balanceadas.</p>
                         </div>
                     </div>
 
                     <!-- Estratégia 3 -->
                     <div class="bg-purple-50 dark:bg-purple-900 border border-purple-200 dark:border-purple-700 rounded-lg p-4">
                         <h3 class="text-xl font-bold text-purple-800 dark:text-purple-200 mb-3">
-                            🎰 Estratégia 3: Eliminação Livre
+                            🎰 Estratégia 3: Combinação Inteligente
                         </h3>
                         <div class="space-y-3 text-purple-700 dark:text-purple-300">
-                            <p><strong>Conceito:</strong> Remove apenas os 15 números do último concurso, mas permite repetição de números entre jogos.</p>
-                            <p><strong>Lógica:</strong> Oferece maior variedade e permite fazer mais apostas com números favoritos.</p>
-                            <div class="bg-white dark:bg-gray-800 p-3 rounded border-l-4 border-purple-500">
-                                <p class="font-medium mb-2">Exemplo prático:</p>
-                                <div class="space-y-2 text-sm">
-                                    <p>• <span class="font-bold text-red-600">Números eliminados:</span> 15 números do último sorteio ❌</p>
-                                    <p>• <span class="font-bold">Disponíveis:</span> 10 números sempre fixos</p>
-                                    <p>• <span class="font-bold text-green-600">Jogo 1:</span> [03, 04, 06, 08, 09, 13, 15, 19, 21, 24] + 5 repetidos</p>
-                                    <p>• <span class="font-bold text-green-600">Jogo 2:</span> [03, 04, 06, 08, 09, 13, 15, 19, 21, 24] + 5 diferentes ✨ (permite repetição)</p>
-                                    <p>• <span class="font-bold text-green-600">Jogo N:</span> Sempre dos mesmos 10 números base + combinações</p>
-                                </div>
-                            </div>
+                            <p><strong>Conceito:</strong> Combina eliminação do último sorteio + distribuição por faixas de números.</p>
+                            <p><strong>Distribuição:</strong> Equilibra entre números baixos (1-8), médios (9-17) e altos (18-25).</p>
+                            <p><strong>Flexibilidade:</strong> Permite múltiplos jogos com variações inteligentes.</p>
                         </div>
                     </div>
 
-                    <!-- Controle de Números Sorteados -->
-                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                        <h3 class="text-xl font-bold text-orange-800 mb-3">🎯 Controle de Números Sorteados:</h3>
-                        <div class="space-y-2 text-orange-700">
-                            <p><strong>Bloqueio automático:</strong> Números do último concurso ficam desabilitados por padrão</p>
-                            <p><strong>Visual especial:</strong> Números sorteados têm ícone 🎯 e borda dourada</p>
-                            <p><strong>Estratégia anti-repetição:</strong> Evita usar números que acabaram de sair</p>
-                            <p><strong>Flexibilidade:</strong> Marque "Permitir números sorteados" para habilitá-los</p>
-                            <p><strong>Geração inteligente:</strong> Todas as estratégias respeitam sua preferência automaticamente</p>
-                        </div>
-                    </div>
-
-                    <!-- Estatísticas -->
-                    <div class="rounded-lg p-4" style="background-color: #f7d4f7; border: 1px solid #e368e3;">
-                        <h3 class="text-xl font-bold mb-3" style="color: #410c41;">
-                            📊 Base Estatística Lotofácil
+                    <!-- Base de Dados -->
+                    <div class="rounded-lg p-4" style="background-color: #f1daf1; border: 1px solid #cf7dcd;">
+                        <h3 class="text-xl font-bold mb-3" style="color: #381537;">
+                            📊 Base de Dados Reais
                         </h3>
-                        <div class="space-y-2" style="color: #561056;">
-                            <p>• <strong>Números totais:</strong> 25 (01 a 25)</p>
-                            <p>• <strong>Números por jogo:</strong> 15 únicos</p>
-                            <p>• <strong>Probabilidade de repetição total:</strong> Praticamente 0% (1 em milhões)</p>
-                            <p>• <strong>Vantagem Lotofácil:</strong> Menor universo de números (25) facilita estratégias</p>
-                            <p>• <strong>Cobertura otimizada:</strong> Estratégia 1 elimina 60% dos números (15/25)</p>
+                        <div class="space-y-2" style="color: #5d225c;">
+                            <p>• <strong>Fonte:</strong> API oficial da Caixa Econômica Federal</p>
+                            <p>• <strong>Concursos:</strong> Do primeiro (1) até o último disponível</p>
+                            <p>• <strong>Atualização:</strong> Sempre busca dados mais recentes da API</p>
+                            <p>• <strong>Análise:</strong> Frequência, padrões e distribuições reais</p>
+                            <p>• <strong>Confiabilidade:</strong> 100% baseado em dados oficiais</p>
                         </div>
                     </div>
                 </div>
@@ -850,16 +755,6 @@
                         ✅ Entendi, Vamos Gerar Palpites!
                     </button>
                 </div>
-            </div>
-        </div>
-
-        <!-- Informações Adicionais -->
-        <div id="infoAdicional" class="hidden mt-8 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-4">
-                📋 Informações do Concurso
-            </h3>
-            <div id="detalhes" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-blue-700 dark:text-blue-300">
-                <!-- Detalhes serão inseridos aqui -->
             </div>
         </div>
     </div>
@@ -891,8 +786,6 @@
         const erroMsg = document.getElementById('erroMsg');
         const resultados = document.getElementById('resultados');
         const tabelaBody = document.getElementById('tabelaBody');
-        const infoAdicional = document.getElementById('infoAdicional');
-        const detalhes = document.getElementById('detalhes');
         const destacarPares = document.getElementById('destacarPares');
         const destacarImpares = document.getElementById('destacarImpares');
         const ordenarCrescente = document.getElementById('ordenarCrescente');
@@ -902,13 +795,7 @@
         let todosResultados = [];
         let carregamentoAtivo = false;
         let ultimoConcursoNumero = 0;
-
-        // Variáveis do gerador de palpites
-        let ultimoConcursoData = null;
-        let numerosEliminadosGlobal = [];
-        let numerosUsadosProgressivo = [];
-        let numerosSorteados = new Set(); // Números do último concurso
-        let sequenciaAtual = 1;
+        let dadosEstatisticos = {};
         let historicoPalpitesData = [];
 
         // Função para formatar data
@@ -946,14 +833,14 @@
             }
         }
 
-        // Função para buscar último concurso de forma robusta
-        async function buscarUltimoConcurso() {
-            console.log('🚀 Iniciando busca robusta do último concurso da Lotofácil...');
+        // Função para buscar último concurso da API da Caixa
+        async function buscarUltimoConcursoDaCaixa() {
+            console.log('🔍 Buscando último concurso na API oficial da Caixa...');
             
-            // Estratégia 1: Tentar API principal múltiplas vezes
+            // Tentar API principal primeiro
             for (let tentativa = 1; tentativa <= 3; tentativa++) {
                 try {
-                    console.log(`🔍 Tentativa ${tentativa}: API principal...`);
+                    console.log(`🌐 Tentativa ${tentativa}: API principal da Caixa...`);
                     const response = await fetch('https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil', {
                         method: 'GET',
                         headers: {
@@ -965,7 +852,8 @@
                     if (response.ok) {
                         const data = await response.json();
                         if (data && data.numero && data.numero > 0) {
-                            console.log(`✅ Sucesso! Último concurso encontrado: ${data.numero}`);
+                            console.log(`✅ SUCESSO! Último concurso da Caixa: ${data.numero}`);
+                            atualizarStatusApi('Conectado à API da Caixa', data.numero, data.dataApuracao, true);
                             return data.numero;
                         }
                     }
@@ -979,18 +867,19 @@
                 }
             }
             
-            // Estratégia 2: Busca sequencial reversa
-            console.log('🔄 Iniciando busca sequencial reversa...');
+            // Busca sequencial reversa
+            console.log('🔄 Fazendo busca sequencial na API da Caixa...');
             
-            for (let concurso = 3200; concurso >= 3100; concurso--) {
+            for (let concurso = 3500; concurso >= 3400; concurso--) {
                 try {
-                    console.log(`🔍 Testando concurso ${concurso}...`);
+                    console.log(`🔍 Testando concurso ${concurso} na API...`);
                     const response = await fetch(`https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/${concurso}`);
                     
                     if (response.ok) {
                         const data = await response.json();
                         if (data && data.numero === concurso && data.dezenasSorteadasOrdemSorteio) {
-                            console.log(`🎯 ENCONTRADO! Último concurso válido: ${concurso}`);
+                            console.log(`🎯 ENCONTRADO na API! Último concurso válido: ${concurso}`);
+                            atualizarStatusApi('API da Caixa funcionando', concurso, data.dataApuracao, true);
                             return concurso;
                         }
                     }
@@ -1002,11 +891,31 @@
                 }
             }
             
-            // Estratégia 3: Fallback
-            console.log('⚠️ Todas as estratégias falharam, usando fallback...');
-            const ultimoConhecido = 3100;
-            console.log(`📌 Usando último concurso conhecido: ${ultimoConhecido}`);
+            // Fallback
+            console.log('⚠️ Usando último concurso conhecido');
+            const ultimoConhecido = 3479;
+            atualizarStatusApi('Último concurso conhecido', ultimoConhecido, 'N/A', false);
             return ultimoConhecido;
+        }
+
+        // Função para atualizar status da API
+        function atualizarStatusApi(status, numeroConcurso, dataApuracao, online) {
+            const statusDiv = document.getElementById('statusApi');
+            const statusTexto = document.getElementById('statusTexto');
+            const numeroSpan = document.getElementById('numeroUltimoConcurso');
+            const dataSpan = document.getElementById('dataUltimoConcurso');
+            
+            statusTexto.textContent = status;
+            numeroSpan.textContent = numeroConcurso;
+            dataSpan.textContent = formatarData(dataApuracao);
+            
+            if (online) {
+                statusDiv.className = 'mb-4 p-4 rounded-lg border bg-green-50 border-green-200 text-green-800';
+            } else {
+                statusDiv.className = 'mb-4 p-4 rounded-lg border bg-yellow-50 border-yellow-200 text-yellow-800';
+            }
+            
+            statusDiv.classList.remove('hidden');
         }
 
         // Função para atualizar progresso
@@ -1025,36 +934,35 @@
             loadingText.textContent = 'Carregamento cancelado';
         }
 
-        // FUNÇÃO PRINCIPAL: Carregar TODOS os concursos
-        async function carregarTodosOsConcursos() {
-            console.log('🚀 INICIANDO: Carregar TODOS os concursos da Lotofácil...');
+        // FUNÇÃO PRINCIPAL: Carregar TODOS os concursos da API da Caixa
+        async function carregarTodosOsConcursosDaCaixa() {
+            console.log('🚀 INICIANDO: Carregar TODOS os concursos da API da Caixa...');
             
             loading.classList.remove('hidden');
             resultados.classList.add('hidden');
             erro.classList.add('hidden');
-            infoAdicional.classList.add('hidden');
             buscarBtn.disabled = true;
             carregamentoAtivo = true;
 
             try {
-                loadingText.textContent = '🔍 Buscando último concurso disponível...';
-                const ultimoConcurso = await buscarUltimoConcurso();
+                loadingText.textContent = '🔍 Buscando último concurso na API oficial da Caixa...';
+                const ultimoConcurso = await buscarUltimoConcursoDaCaixa();
                 
                 if (!ultimoConcurso) {
-                    throw new Error('Não foi possível determinar o último concurso');
+                    throw new Error('Não foi possível determinar o último concurso na API da Caixa');
                 }
 
                 ultimoConcursoNumero = ultimoConcurso;
                 concursoInicio.value = 1;
                 concursoFim.value = ultimoConcurso;
                 
-                console.log(`✅ Definido: Concurso 1 até ${ultimoConcurso}`);
+                console.log(`✅ Carregando concursos 1 até ${ultimoConcurso} da API oficial`);
 
                 const totalConcursos = ultimoConcurso;
-                const tamanhoBatch = 10;
+                const tamanhoBatch = 8;
                 let concursosCarregados = 0;
 
-                loadingText.textContent = `📊 Carregando TODOS os ${totalConcursos} concursos em lotes...`;
+                loadingText.textContent = `📥 Carregando ${totalConcursos} concursos da API da Caixa...`;
                 atualizarProgresso(0, totalConcursos);
 
                 todosResultados = [];
@@ -1062,11 +970,11 @@
                 for (let i = 1; i <= ultimoConcurso && carregamentoAtivo; i += tamanhoBatch) {
                     const fimBatch = Math.min(i + tamanhoBatch - 1, ultimoConcurso);
                     
-                    loadingText.textContent = `📥 Carregando concursos ${i} a ${fimBatch}...`;
+                    loadingText.textContent = `📥 API Caixa: concursos ${i} a ${fimBatch}...`;
                     
                     const promisesBatch = [];
                     for (let j = i; j <= fimBatch; j++) {
-                        promisesBatch.push(buscarConcursoComRetry(j));
+                        promisesBatch.push(buscarConcursoDaCaixaComRetry(j));
                     }
 
                     const resultadosBatch = await Promise.allSettled(promisesBatch);
@@ -1079,6 +987,7 @@
                         atualizarProgresso(concursosCarregados, totalConcursos);
                     });
 
+                    // Atualizar interface em tempo real
                     if (todosResultados.length > 0) {
                         todosResultados.sort((a, b) => a.numero - b.numero);
                         exibirTodosResultados();
@@ -1094,18 +1003,18 @@
                 todosResultados.sort((a, b) => a.numero - b.numero);
 
                 if (todosResultados.length === 0) {
-                    throw new Error('Nenhum resultado encontrado na API. Tente novamente.');
+                    throw new Error('Nenhum resultado encontrado na API da Caixa. Verifique sua conexão.');
                 }
 
-                loadingText.textContent = `✅ SUCESSO! Carregados ${todosResultados.length} concursos (do primeiro ao último)`;
+                loadingText.textContent = `✅ SUCESSO! ${todosResultados.length} concursos carregados da API oficial da Caixa`;
                 exibirTodosResultados();
-                gerarResumoEstatistico();
-                inicializarGeradorPalpites();
+                gerarEstatisticasReais();
+                inicializarGeradorPalpitesInteligente();
                 
-                console.log(`🎉 CONCLUÍDO: ${todosResultados.length} concursos carregados com sucesso!`);
+                console.log(`🎉 CONCLUÍDO: ${todosResultados.length} concursos da API da Caixa carregados!`);
                 
             } catch (error) {
-                console.error('❌ Erro ao carregar todos os concursos:', error);
+                console.error('❌ Erro ao carregar concursos da API da Caixa:', error);
                 erroMsg.textContent = `Erro: ${error.message}`;
                 erro.classList.remove('hidden');
             } finally {
@@ -1115,12 +1024,15 @@
             }
         }
 
-        // Função para buscar um concurso com retry
-        async function buscarConcursoComRetry(numero, tentativas = 3) {
+        // Função para buscar um concurso da API da Caixa com retry
+        async function buscarConcursoDaCaixaComRetry(numero, tentativas = 3) {
             for (let i = 0; i < tentativas; i++) {
                 try {
                     const response = await fetch(`https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/${numero}`, {
-                        timeout: 10000
+                        timeout: 10000,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
                     });
                     if (!response.ok) {
                         if (i === tentativas - 1) return null;
@@ -1128,7 +1040,12 @@
                         continue;
                     }
                     const data = await response.json();
-                    return data;
+                    
+                    // Validar dados essenciais
+                    if (data && data.numero === numero && data.dezenasSorteadasOrdemSorteio && data.dezenasSorteadasOrdemSorteio.length === 15) {
+                        return data;
+                    }
+                    return null;
                 } catch (error) {
                     console.error(`Tentativa ${i + 1} falhou para concurso ${numero}:`, error);
                     if (i === tentativas - 1) return null;
@@ -1185,6 +1102,51 @@
                 texto: `${pares}P/${impares}I`,
                 maioria: pares > impares ? 'pares' : (impares > pares ? 'impares' : 'equilibrado')
             };
+        }
+
+        // Função para gerar estatísticas baseadas em dados reais
+        function gerarEstatisticasReais() {
+            console.log('📊 Gerando estatísticas baseadas em dados reais da API...');
+            
+            // Calcular frequência dos números
+            const frequencia = {};
+            for (let i = 1; i <= 25; i++) {
+                frequencia[i] = 0;
+            }
+            
+            // Contar aparições reais
+            todosResultados.forEach(resultado => {
+                if (resultado.dezenasSorteadasOrdemSorteio) {
+                    resultado.dezenasSorteadasOrdemSorteio.forEach(numero => {
+                        const num = parseInt(numero);
+                        if (num >= 1 && num <= 25) {
+                            frequencia[num]++;
+                        }
+                    });
+                }
+            });
+            
+            // Classificar por frequência
+            const numerosOrdenados = Object.entries(frequencia)
+                .map(([num, freq]) => ({ numero: parseInt(num), frequencia: freq }))
+                .sort((a, b) => b.frequencia - a.frequencia);
+            
+            // Dividir em categorias
+            const totalNumeros = numerosOrdenados.length;
+            const terco = Math.floor(totalNumeros / 3);
+            
+            dadosEstatisticos = {
+                frequentes: numerosOrdenados.slice(0, terco).map(item => item.numero),
+                medios: numerosOrdenados.slice(terco, terco * 2).map(item => item.numero),
+                raros: numerosOrdenados.slice(terco * 2).map(item => item.numero),
+                frequencia: frequencia,
+                totalConcursos: todosResultados.length
+            };
+            
+            console.log('✅ Estatísticas reais calculadas:', dadosEstatisticos);
+            
+            // Gerar resumo visual
+            gerarResumoEstatisticoReal();
         }
 
         // Função para exibir todos os resultados na tabela
@@ -1310,7 +1272,7 @@
         function atualizarContador(visiveis, total) {
             const contador = document.getElementById('contadorResultados');
             if (visiveis === total) {
-                contador.textContent = `📊 ${total} concursos carregados (COMPLETO)`;
+                contador.textContent = `📊 ${total} concursos da API da Caixa (COMPLETO)`;
             } else {
                 contador.textContent = `📊 ${visiveis} de ${total} concursos (filtrado)`;
             }
@@ -1325,94 +1287,17 @@
             });
         }
 
-        // Event listeners
-        buscarBtn.addEventListener('click', carregarTodosOsConcursos);
-        cancelarBtn.addEventListener('click', cancelarCarregamento);
-        
-        // Event listeners para filtros
-        for (let i = 1; i <= 15; i++) {
-            const filtro = document.getElementById(`filtro${i}`);
-            filtro.addEventListener('input', aplicarFiltros);
-        }
-
-        destacarPares.addEventListener('change', atualizarDestaques);
-        destacarImpares.addEventListener('change', atualizarDestaques);
-        
-        ordenarCrescente.addEventListener('change', () => {
-            if (todosResultados.length > 0) {
-                exibirTodosResultados();
-                gerarResumoEstatistico();
-            }
-        });
-
-        ordenarConcursoDecrescente.addEventListener('change', () => {
-            if (todosResultados.length > 0) {
-                exibirTodosResultados();
-            }
-        });
-
-        concursoInicio.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') carregarTodosOsConcursos();
-        });
-        
-        concursoFim.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') carregarTodosOsConcursos();
-        });
-
-        // Função para calcular estatísticas por posição
-        function calcularEstatisticasPorPosicao() {
-            const estatisticasPorPosicao = {};
-            
-            for (let pos = 1; pos <= 15; pos++) {
-                estatisticasPorPosicao[pos] = {};
-                for (let num = 1; num <= 25; num++) {
-                    estatisticasPorPosicao[pos][num] = 0;
-                }
-            }
-            
-            todosResultados.forEach(resultado => {
-                if (resultado.dezenasSorteadasOrdemSorteio && resultado.dezenasSorteadasOrdemSorteio.length >= 15) {
-                    resultado.dezenasSorteadasOrdemSorteio.forEach((numero, index) => {
-                        const posicao = index + 1;
-                        if (posicao <= 15 && numero >= 1 && numero <= 25) {
-                            estatisticasPorPosicao[posicao][numero]++;
-                        }
-                    });
-                }
-            });
-            
-            const resultadoPorPosicao = {};
-            for (let pos = 1; pos <= 15; pos++) {
-                const contadores = estatisticasPorPosicao[pos];
-                const numerosOrdenados = Object.entries(contadores)
-                    .filter(([num, count]) => count > 0)
-                    .sort(([,a], [,b]) => b - a);
-                
-                const maisFrequente = numerosOrdenados[0] || ['N/A', 0];
-                const menosFrequente = numerosOrdenados[numerosOrdenados.length - 1] || ['N/A', 0];
-                
-                resultadoPorPosicao[pos] = {
-                    mais: { numero: parseInt(maisFrequente[0]), freq: maisFrequente[1] },
-                    menos: { numero: parseInt(menosFrequente[0]), freq: menosFrequente[1] },
-                    todos: numerosOrdenados
-                };
-            }
-            
-            return resultadoPorPosicao;
-        }
-
-        // Função para gerar resumo estatístico
-        function gerarResumoEstatistico() {
-            if (todosResultados.length === 0) return;
+        // Função para gerar resumo estatístico baseado em dados reais
+        function gerarResumoEstatisticoReal() {
+            if (todosResultados.length === 0 || !dadosEstatisticos.frequencia) return;
 
             const resumoDiv = document.getElementById('resumoEstatistico');
             const estatisticasDiv = document.getElementById('estatisticasGerais');
             const graficoDiv = document.getElementById('graficoBarras');
             const padroesDiv = document.getElementById('padroes');
-            const estatisticasPosicaoDiv = document.getElementById('estatisticasPosicao');
-            const dadosPosicoes = document.getElementById('dadosPosicoes');
+            const frequenciaGrid = document.getElementById('frequenciaNumerosGrid');
 
-            // Calcular estatísticas
+            // Calcular estatísticas par/ímpar
             let totalPares = 0, totalImpares = 0;
             let concursosMaioriaPares = 0, concursosMaioriaImpares = 0, concursosEquilibrados = 0;
             const padroesCombinacoes = {};
@@ -1443,11 +1328,11 @@
                     <div class="text-sm font-semibold text-blue-800 dark:text-blue-200">Maioria Pares</div>
                     <div class="text-xs text-blue-600 dark:text-blue-400">${percPares}%</div>
                 </div>
-                <div class="p-4 rounded-lg text-center" style="background-color: #f7d4f7;">
-                    <div class="text-2xl font-bold" style="color: #7d177d;">${concursosMaioriaImpares}</div>
-                    <div class="text-sm" style="color: #410c41;">Concursos com</div>
-                    <div class="text-sm font-semibold" style="color: #410c41;">Maioria Ímpares</div>
-                    <div class="text-xs" style="color: #561056;">${percImpares}%</div>
+                <div class="p-4 rounded-lg text-center" style="background-color: #f1daf1;">
+                    <div class="text-2xl font-bold" style="color: #672666;">${concursosMaioriaImpares}</div>
+                    <div class="text-sm" style="color: #381537;">Concursos com</div>
+                    <div class="text-sm font-semibold" style="color: #381537;">Maioria Ímpares</div>
+                    <div class="text-xs" style="color: #5d225c;">${percImpares}%</div>
                 </div>
                 <div class="bg-yellow-50 dark:bg-yellow-900 p-4 rounded-lg text-center">
                     <div class="text-2xl font-bold text-yellow-600 dark:text-yellow-300">${concursosEquilibrados}</div>
@@ -1455,13 +1340,37 @@
                     <div class="text-sm font-semibold text-yellow-800 dark:text-yellow-200">Equilibrados</div>
                     <div class="text-xs text-yellow-600 dark:text-yellow-400">${percEquilibrados}%</div>
                 </div>
-                <div class="p-4 rounded-lg text-center" style="background-color: #f3bef3;">
-                    <div class="text-lg font-bold" style="color: #7d177d;">${totalPares}P / ${totalImpares}I</div>
-                    <div class="text-sm" style="color: #410c41;">Total de</div>
-                    <div class="text-sm font-semibold" style="color: #410c41;">Números Sorteados</div>
-                    <div class="text-xs" style="color: #561056;">${totalConcursos} concursos</div>
+                <div class="p-4 rounded-lg text-center" style="background-color: #eac7ea;">
+                    <div class="text-lg font-bold" style="color: #672666;">${totalPares}P / ${totalImpares}I</div>
+                    <div class="text-sm" style="color: #381537;">Total de</div>
+                    <div class="text-sm font-semibold" style="color: #381537;">Números Sorteados</div>
+                    <div class="text-xs" style="color: #5d225c;">${totalConcursos} concursos</div>
                 </div>
             `;
+
+            // Grid de frequência dos números
+            if (frequenciaGrid) {
+                let gridHTML = '';
+                for (let num = 1; num <= 25; num++) {
+                    const freq = dadosEstatisticos.frequencia[num] || 0;
+                    const percentual = ((freq / totalConcursos) * 100).toFixed(1);
+                    
+                    let classe = 'numero-medio';
+                    if (dadosEstatisticos.frequentes.includes(num)) {
+                        classe = 'numero-frequente';
+                    } else if (dadosEstatisticos.raros.includes(num)) {
+                        classe = 'numero-raro';
+                    }
+                    
+                    gridHTML += `
+                        <div class="${classe} w-12 h-12 flex flex-col items-center justify-center rounded-lg text-xs font-bold">
+                            <div>${num.toString().padStart(2, '0')}</div>
+                            <div class="text-xs">${freq}</div>
+                        </div>
+                    `;
+                }
+                frequenciaGrid.innerHTML = gridHTML;
+            }
 
             // Gráfico de barras visual
             const maxValor = Math.max(concursosMaioriaPares, concursosMaioriaImpares, concursosEquilibrados);
@@ -1477,7 +1386,7 @@
                 <div class="flex items-center">
                     <div class="w-20 text-sm text-gray-600 dark:text-gray-400">Maioria Ímpares:</div>
                     <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-6 mx-3">
-                        <div class="bg-pink-500 h-6 rounded-full flex items-center justify-end pr-2" style="width: ${(concursosMaioriaImpares/maxValor)*100}%">
+                        <div class="h-6 rounded-full flex items-center justify-end pr-2" style="width: ${(concursosMaioriaImpares/maxValor)*100}%; background-color: #c157bf;">
                             <span class="text-xs text-white font-bold">${concursosMaioriaImpares}</span>
                         </div>
                     </div>
@@ -1492,428 +1401,76 @@
                 </div>
             `;
 
-            // Padrões mais comuns
-            const padroesOrdenados = Object.entries(padroesCombinacoes)
-                .sort(([,a], [,b]) => b - a)
-                .slice(0, 10);
+            // Insights baseados em dados reais
+            const numeroMaisFrequente = dadosEstatisticos.frequentes[0];
+            const numeroMenosFrequente = dadosEstatisticos.raros[dadosEstatisticos.raros.length - 1];
+            const freqMaior = dadosEstatisticos.frequencia[numeroMaisFrequente];
+            const freqMenor = dadosEstatisticos.frequencia[numeroMenosFrequente];
 
-            let padroesMaisComuns = '<div class="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">';
-            padroesOrdenados.forEach(([padrao, count]) => {
-                const perc = ((count / totalConcursos) * 100).toFixed(1);
-                padroesMaisComuns += `
-                    <div class="bg-gray-100 dark:bg-gray-700 p-2 rounded text-center">
-                        <div class="font-bold text-sm">${padrao}</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400">${count}x (${perc}%)</div>
-                    </div>
-                `;
-            });
-            padroesMaisComuns += '</div>';
+            let insights = `
+                <div class="space-y-3">
+                    <p><strong>📊 Análise Real:</strong> Dados de ${totalConcursos} concursos oficiais da Caixa Econômica Federal.</p>
+                    <p><strong>🎯 Número mais frequente:</strong> ${numeroMaisFrequente} (saiu ${freqMaior} vezes - ${((freqMaior/totalConcursos)*100).toFixed(1)}%)</p>
+                    <p><strong>⭐ Número mais raro:</strong> ${numeroMenosFrequente} (saiu ${freqMenor} vezes - ${((freqMenor/totalConcursos)*100).toFixed(1)}%)</p>
+                    <p><strong>🔄 Equilíbrio:</strong> A diferença entre o mais frequente e mais raro é de ${freqMaior - freqMenor} aparições.</p>
+                    <p><strong>🌸 Lotofácil:</strong> Com 15 números por sorteio, cada número teoricamente deveria aparecer em 60% dos concursos.</p>
+                </div>
+            `;
 
-            // Análises e insights
-            let insights = '';
-            if (concursosMaioriaPares > concursosMaioriaImpares) {
-                const diferenca = concursosMaioriaPares - concursosMaioriaImpares;
-                insights += `<p><strong>🔍 Tendência:</strong> Há uma ligeira tendência para concursos com maioria de números pares (${diferenca} concursos a mais).</p>`;
-            } else if (concursosMaioriaImpares > concursosMaioriaPares) {
-                const diferenca = concursosMaioriaImpares - concursosMaioriaPares;
-                insights += `<p><strong>🔍 Tendência:</strong> Há uma ligeira tendência para concursos com maioria de números ímpares (${diferenca} concursos a mais).</p>`;
-            } else {
-                insights += `<p><strong>🔍 Equilíbrio:</strong> Os concursos estão perfeitamente equilibrados entre maioria pares e ímpares.</p>`;
-            }
-
-            const padraoMaisComum = padroesOrdenados[0];
-            if (padraoMaisComum) {
-                insights += `<p><strong>📊 Padrão mais comum:</strong> ${padraoMaisComum[0]} apareceu em ${padraoMaisComum[1]} concursos (${((padraoMaisComum[1]/totalConcursos)*100).toFixed(1)}%).</p>`;
-            }
-
-            insights += `<p><strong>🌸 Especial Lotofácil:</strong> Com 15 números sorteados entre 1-25, a distribuição par/ímpar tende a ser mais variada que outras modalidades.</p>`;
-
-            padroesDiv.innerHTML = padroesMaisComuns + insights;
-
-            // Mostrar estatísticas por posição apenas quando "Ordenar dezenas crescente" está desmarcado
-            if (!ordenarCrescente.checked) {
-                const estatisticasPorPosicao = calcularEstatisticasPorPosicao();
-                
-                let cardsPosicoesHTML = '';
-                for (let pos = 1; pos <= 10; pos++) {
-                    const dados = estatisticasPorPosicao[pos];
-                    const percMais = ((dados.mais.freq / totalConcursos) * 100).toFixed(1);
-                    const percMenos = ((dados.menos.freq / totalConcursos) * 100).toFixed(1);
-                    
-                    cardsPosicoesHTML += `
-                        <div class="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900 dark:to-rose-900 p-3 rounded-lg border border-pink-200 dark:border-pink-700">
-                            <h5 class="font-bold text-center text-pink-800 dark:text-pink-200 mb-2 text-sm">🌸 ${pos}º</h5>
-                            <div class="space-y-1">
-                                <div class="bg-pink-100 dark:bg-pink-800 p-2 rounded">
-                                    <div class="text-center">
-                                        <div class="text-base font-bold text-pink-700 dark:text-pink-200">${dados.mais.numero}</div>
-                                        <div class="text-xs text-pink-600 dark:text-pink-300">Mais</div>
-                                        <div class="text-xs text-pink-500 dark:text-pink-400">${dados.mais.freq}x</div>
-                                    </div>
-                                </div>
-                                <div class="bg-red-100 dark:bg-red-800 p-2 rounded">
-                                    <div class="text-center">
-                                        <div class="text-base font-bold text-red-700 dark:text-red-200">${dados.menos.numero}</div>
-                                        <div class="text-xs text-red-600 dark:text-red-300">Menos</div>
-                                        <div class="text-xs text-red-500 dark:text-red-400">${dados.menos.freq}x</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
-                
-                dadosPosicoes.innerHTML = cardsPosicoesHTML + 
-                    '<div class="col-span-full text-center text-sm text-gray-600 dark:text-gray-400 mt-4">⚠️ Mostrando apenas as primeiras 10 posições (de 15 total)</div>';
-                estatisticasPosicaoDiv.classList.remove('hidden');
-            } else {
-                estatisticasPosicaoDiv.classList.add('hidden');
-            }
-
-            // Gerar análise visual apenas quando "Ordenar dezenas crescente" está desmarcado
-            if (!ordenarCrescente.checked) {
-                const jogos = parseInt(document.getElementById('jogosAnalisar').value) || 30;
-                if (todosResultados.length >= jogos) {
-                    gerarAnaliseVisual(jogos);
-                }
-            } else {
-                document.getElementById('analiseVisual').classList.add('hidden');
-            }
+            padroesDiv.innerHTML = insights;
 
             resumoDiv.classList.remove('hidden');
         }
 
-        // Função para gerar análise visual dos números que saíram por posição
-        function gerarAnaliseVisual(jogosAnalisar = 30) {
-            if (todosResultados.length < jogosAnalisar) return;
+        // GERADOR DE PALPITES INTELIGENTE
 
-            const ultimosConcursos = [...todosResultados]
-                .sort((a, b) => b.numero - a.numero)
-                .slice(0, jogosAnalisar);
+        // Função para inicializar o gerador de palpites inteligente
+        function inicializarGeradorPalpitesInteligente() {
+            if (todosResultados.length === 0 || !dadosEstatisticos.frequencia) return;
 
-            const numerosQueApareceram = {};
-            
-            for (let pos = 1; pos <= 15; pos++) {
-                numerosQueApareceram[pos] = new Set();
-                
-                ultimosConcursos.forEach((concurso, index) => {
-                    if (concurso.dezenasSorteadasOrdemSorteio && 
-                        concurso.dezenasSorteadasOrdemSorteio[pos - 1]) {
-                        
-                        const numero = parseInt(concurso.dezenasSorteadasOrdemSorteio[pos - 1]);
-                        numerosQueApareceram[pos].add(numero);
-                    }
-                });
-            }
+            console.log('🧠 Inicializando gerador de palpites inteligente...');
 
-            // Gerar tabela visual (apenas primeiras 10 posições)
-            const tabela = document.getElementById('tabelaAnaliseVisual');
-            
-            let html = `
-                <thead style="background-color: #f3bef3;">
-                    <tr>
-                        <th class="px-2 py-2 text-center text-xs font-bold border" style="color: #410c41; border-color: #db3ddb;">
-                            Nº
-                        </th>`;
-            
-            for (let pos = 1; pos <= 10; pos++) {
-                html += `
-                    <th class="px-2 py-2 text-center text-xs font-bold border" style="color: #410c41; border-color: #db3ddb;">
-                        ${pos}º
-                    </th>`;
-            }
-            
-            html += `</tr></thead><tbody class="bg-white dark:bg-gray-800">`;
-
-            for (let num = 1; num <= 25; num++) {
-                html += `<tr>`;
-                
-                html += `
-                    <td class="px-2 py-2 text-center font-bold text-gray-700 dark:text-gray-300 border" style="background-color: #efa9ef; border-color: #db3ddb;">
-                        ${num}
-                    </td>
-                `;
-                
-                for (let pos = 1; pos <= 10; pos++) {
-                    const saiu = numerosQueApareceram[pos].has(num);
-                    html += `
-                        <td class="px-2 py-2 text-center border" style="border-color: #db3ddb;">
-                            ${saiu ? '✅' : ''}
-                        </td>
-                    `;
-                }
-                
-                html += `</tr>`;
-            }
-
-            html += '</tbody>';
-            tabela.innerHTML = html;
-
-            // Gerar resumo estatístico (apenas primeiras 10 posições)
-            const resumo = document.getElementById('resumoAnaliseVisual');
-            let resumoHTML = '';
-            
-            for (let pos = 1; pos <= 10; pos++) {
-                const totalSaiu = numerosQueApareceram[pos].size;
-                const totalFaltando = 25 - totalSaiu;
-                
-                resumoHTML += `
-                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg border border-pink-300 dark:border-pink-600 text-center">
-                        <div class="text-xs font-medium text-pink-700 dark:text-pink-300 mb-1">${pos}º</div>
-                        <div class="text-sm font-bold text-pink-600 dark:text-pink-400">${totalSaiu}/25</div>
-                        <div class="text-xs text-pink-500 dark:text-pink-400">${totalFaltando} falta</div>
-                    </div>
-                `;
-            }
-            
-            resumo.innerHTML = resumoHTML;
-
-            // Gerar tabela azul - Números que NÃO saíram por posição
-            const numerosFaltandoPorPosicao = {};
-            
-            for (let pos = 1; pos <= 10; pos++) {
-                const numerosFaltando = [];
-                
-                for (let num = 1; num <= 25; num++) {
-                    if (!numerosQueApareceram[pos].has(num)) {
-                        numerosFaltando.push(num);
-                    }
-                }
-                
-                numerosFaltandoPorPosicao[pos] = numerosFaltando.sort((a, b) => a - b);
-            }
-            
-            const tabelaNumerosNaoSairam = document.getElementById('tabelaNumerosNaoSairam');
-            const maxNumerosFaltando = Math.max(...Object.values(numerosFaltandoPorPosicao).map(arr => arr.length));
-            
-            if (maxNumerosFaltando === 0) {
-                tabelaNumerosNaoSairam.innerHTML = `
-                    <tr>
-                        <td colspan="10" class="px-3 py-4 text-center font-medium text-pink-600 dark:text-pink-400 border border-blue-300 dark:border-blue-600">
-                            ✅ Todos os números de 1-25 saíram nas primeiras 10 posições nos últimos ${jogosAnalisar} jogos!
-                        </td>
-                    </tr>
-                `;
-            } else {
-                let htmlNaoSairam = '';
-                
-                for (let linha = 0; linha < maxNumerosFaltando; linha++) {
-                    htmlNaoSairam += '<tr>';
-                    
-                    for (let pos = 1; pos <= 10; pos++) {
-                        const numerosFaltando = numerosFaltandoPorPosicao[pos];
-                        const numero = linha < numerosFaltando.length ? numerosFaltando[linha] : '';
-                        
-                        htmlNaoSairam += `
-                            <td class="px-2 py-2 text-center font-medium text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-600">
-                                ${numero}
-                            </td>
-                        `;
-                    }
-                    
-                    htmlNaoSairam += '</tr>';
-                }
-                
-                tabelaNumerosNaoSairam.innerHTML = htmlNaoSairam;
-            }
-            
-            document.getElementById('jogosEscolhidos').textContent = jogosAnalisar;
-            document.getElementById('analiseVisual').classList.remove('hidden');
-        }
-
-        // Event listeners para análise visual
-        document.getElementById('atualizarAnalise').addEventListener('click', () => {
-            const jogos = parseInt(document.getElementById('jogosAnalisar').value) || 30;
-            if (jogos < 1 || jogos > 100) {
-                mostrarModal('Erro', 'Por favor, insira um valor entre 1 e 100 jogos.');
-                return;
-            }
-            if (todosResultados.length < jogos) {
-                mostrarModal('Dados Insuficientes', `Não há dados suficientes. Disponível: ${todosResultados.length} jogos, Solicitado: ${jogos}`);
-                return;
-            }
-            gerarAnaliseVisual(jogos);
-        });
-
-        document.getElementById('jogosAnalisar').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                document.getElementById('atualizarAnalise').click();
-            }
-        });
-
-        // Função para mostrar modal personalizada
-        function mostrarModal(titulo, mensagem) {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
-            modal.innerHTML = `
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">${titulo}</h3>
-                    <p class="text-gray-700 dark:text-gray-300 mb-4">${mensagem}</p>
-                    <div class="flex justify-end">
-                        <button class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded" onclick="this.closest('.fixed').remove()">OK</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        // Event listener para toggle da tabela
-        document.getElementById('toggleTabelaBtn').addEventListener('click', () => {
-            const resultados = document.getElementById('resultados');
-            const toggleBtn = document.getElementById('toggleTabelaBtn');
-            
-            if (resultados.classList.contains('hidden')) {
-                resultados.classList.remove('hidden');
-                toggleBtn.textContent = '👁️ Ocultar Tabela de Resultados';
-                toggleBtn.className = 'bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200';
-            } else {
-                resultados.classList.add('hidden');
-                toggleBtn.textContent = '👁️ Mostrar Tabela de Resultados';
-                toggleBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200';
-            }
-        });
-
-        // 🌸 FUNÇÕES DO GERADOR DE PALPITES LOTOFÁCIL
-
-        // Função para inicializar o gerador de palpites
-        function inicializarGeradorPalpites() {
-            if (todosResultados.length === 0) return;
-
-            ultimoConcursoData = todosResultados.reduce((ultimo, atual) => {
+            // Obter último concurso
+            const ultimoConcurso = todosResultados.reduce((ultimo, atual) => {
                 return atual.numero > ultimo.numero ? atual : ultimo;
             });
 
-            // Converter números para inteiros - Lotofácil tem 15 números de 1-25
-            numerosEliminadosGlobal = (ultimoConcursoData.dezenasSorteadasOrdemSorteio || []).map(num => parseInt(num));
-            numerosUsadosProgressivo = [...numerosEliminadosGlobal];
-            sequenciaAtual = 1;
-
-            // Identificar números sorteados
-            identificarNumerosSorteados(numerosEliminadosGlobal);
-
-            atualizarInfoUltimoConcurso();
-            criarGridNumerosVisual();
-            atualizarVisualizacaoNumeros();
-            atualizarStatusProgressivo();
+            atualizarInfoUltimoConcurso(ultimoConcurso);
+            criarGridNumerosVisualizacao();
 
             document.getElementById('geradorPalpites').classList.remove('hidden');
         }
 
-        // Função para identificar números sorteados
-        function identificarNumerosSorteados(numeros) {
-            numerosSorteados.clear();
-            numeros.forEach(num => {
-                numerosSorteados.add(parseInt(num));
-            });
-            
-            // Exibir controle se há números sorteados
-            if (numerosSorteados.size > 0) {
-                exibirControleNumerosSorteados();
-                atualizarEstadoNumerosSorteados();
-            }
-        }
-
-        // Função para exibir controle de números sorteados
-        function exibirControleNumerosSorteados() {
-            const controle = document.getElementById('controleNumerosSorteados');
-            const lista = document.getElementById('numerosSorteadosLista');
-            
-            const numerosArray = Array.from(numerosSorteados).sort((a, b) => a - b);
-            lista.textContent = numerosArray.map(n => n.toString().padStart(2, '0')).join(', ');
-            
-            controle.classList.remove('hidden');
-        }
-
-        // Função para criar grid visual de números
-        function criarGridNumerosVisual() {
-            const grid = document.getElementById('gridNumerosVisual');
-            grid.innerHTML = '';
-            
-            for (let i = 1; i <= 25; i++) {
-                const btn = document.createElement('div');
-                btn.className = 'w-12 h-12 flex items-center justify-center rounded-lg border-2 font-bold text-sm cursor-pointer transition-all duration-200';
-                btn.textContent = i.toString().padStart(2, '0');
-                btn.dataset.numero = i;
-                
-                // Aplicar classes baseado no status
-                if (numerosSorteados.has(i)) {
-                    btn.classList.add('numero-sorteado');
-                } else {
-                    btn.classList.add('numero-disponivel');
-                }
-                
-                grid.appendChild(btn);
-            }
-            
-            atualizarEstadoNumerosSorteados();
-        }
-
-        // Função para atualizar estado dos números sorteados
-        function atualizarEstadoNumerosSorteados() {
-            const permitir = document.getElementById('permitirNumerosSorteados').checked;
-            
-            numerosSorteados.forEach(numero => {
-                const btn = document.querySelector(`#gridNumerosVisual div[data-numero="${numero}"]`);
-                if (btn) {
-                    if (permitir) {
-                        // Checkbox MARCADO: HABILITAR números sorteados
-                        btn.classList.remove('disabled');
-                        btn.style.cursor = 'pointer';
-                        btn.onclick = null; // Remover qualquer handler anterior
-                    } else {
-                        // Checkbox DESMARCADO (padrão): DESABILITAR números sorteados
-                        btn.classList.add('disabled');
-                        btn.style.cursor = 'not-allowed';
-                        btn.onclick = () => {
-                            // Modal explicativo ao invés de alert()
-                            const modal = document.createElement('div');
-                            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
-                            modal.innerHTML = `
-                                <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
-                                    <h3 class="font-bold text-orange-800 mb-2">🎯 Número Sorteado</h3>
-                                    <p class="text-gray-700 mb-4">O número ${numero.toString().padStart(2, '0')} saiu no último concurso. Marque "Permitir usar números já sorteados" para incluí-lo nos palpites.</p>
-                                    <div class="flex justify-end">
-                                        <button class="px-4 py-2 bg-orange-500 text-white hover:bg-orange-600 rounded" onclick="this.closest('.fixed').remove()">Entendi</button>
-                                    </div>
-                                </div>
-                            `;
-                            document.body.appendChild(modal);
-                        };
-                    }
-                }
-            });
-        }
-
         // Função para atualizar informações do último concurso
-        function atualizarInfoUltimoConcurso() {
+        function atualizarInfoUltimoConcurso(ultimoConcurso) {
             const dadosDiv = document.getElementById('dadosUltimoConcurso');
             
-            if (!ultimoConcursoData) {
+            if (!ultimoConcurso) {
                 dadosDiv.innerHTML = '<p class="text-gray-500">Nenhum dado disponível</p>';
                 return;
             }
 
-            const numeros = (ultimoConcursoData.dezenasSorteadasOrdemSorteio || []);
+            const numeros = (ultimoConcurso.dezenasSorteadasOrdemSorteio || []);
 
             const numerosHTML = numeros
                 .map(num => `<span class="inline-block bg-purple-100 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full text-sm font-bold mx-1">${num}</span>`)
                 .join('');
 
-            const dataFormatada = formatarData(ultimoConcursoData.dataApuracao) || 
-                                formatarData(ultimoConcursoData.dataSorteio) || 
+            const dataFormatada = formatarData(ultimoConcurso.dataApuracao) || 
+                                formatarData(ultimoConcurso.dataSorteio) || 
                                 'N/A';
 
             dadosDiv.innerHTML = `
                 <div class="space-y-4">
                     <div class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                        Concurso: <span class="text-purple-600 dark:text-purple-400">${ultimoConcursoData.numero}</span>
+                        Concurso: <span class="text-purple-600 dark:text-purple-400">${ultimoConcurso.numero}</span>
                     </div>
                     <div class="text-sm text-gray-600 dark:text-gray-400">
                         Data: ${dataFormatada}
                     </div>
                     
                     <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900 dark:to-pink-900 p-4 rounded-lg border border-purple-200 dark:border-purple-700">
-                        <div class="text-sm font-semibold mb-3 text-center" style="color: #410c41;">🌸 Números Sorteados (15):</div>
+                        <div class="text-sm font-semibold mb-3 text-center" style="color: #381537;">🌸 Números Sorteados (15):</div>
                         <div class="flex flex-wrap gap-1 justify-center">
                             ${numerosHTML}
                         </div>
@@ -1922,406 +1479,303 @@
             `;
         }
 
-        // Função para atualizar visualização dos números
-        function atualizarVisualizacaoNumeros() {
-            const eliminadosDiv = document.getElementById('numerosEliminados');
-            const disponiveisDiv = document.getElementById('numerosDisponiveis');
+        // Função para criar grid visual dos números com base em dados reais
+        function criarGridNumerosVisualizacao() {
+            const grid = document.getElementById('gridNumerosVisual');
+            if (!grid) return;
             
-            // Considerar se números sorteados estão permitidos
-            const permiteSorteados = document.getElementById('permitirNumerosSorteados').checked;
-            let numerosEliminadosExibir = numerosUsadosProgressivo;
+            grid.innerHTML = '';
             
-            if (!permiteSorteados) {
-                // Se não permite sorteados, garantir que estão na lista de eliminados
-                const eliminadosSet = new Set(numerosUsadosProgressivo);
-                numerosSorteados.forEach(num => eliminadosSet.add(num));
-                numerosEliminadosExibir = Array.from(eliminadosSet);
-            }
-            
-            // Números eliminados
-            const eliminadosHTML = numerosEliminadosExibir
-                .sort((a, b) => a - b)
-                .map(num => {
-                    const isSorteado = numerosSorteados.has(num);
-                    const classes = isSorteado ? 'numero-sorteado px-2 py-1 rounded-full text-sm font-bold' : 'numero-eliminado px-2 py-1 rounded-full text-sm font-bold';
-                    return `<span class="${classes}">${num}</span>`;
-                })
-                .join('');
-            
-            eliminadosDiv.innerHTML = eliminadosHTML || '<span class="text-gray-500 text-sm">Nenhum número eliminado</span>';
-            
-            // Números disponíveis (1-25)
-            const todosNumeros = Array.from({length: 25}, (_, i) => i + 1);
-            const numerosDisponiveis = todosNumeros.filter(num => !numerosEliminadosExibir.includes(num));
-            
-            const disponiveisHTML = numerosDisponiveis
-                .map(num => `<span class="numero-disponivel px-2 py-1 rounded-full text-sm font-bold">${num}</span>`)
-                .join('');
-            
-            disponiveisDiv.innerHTML = disponiveisHTML || '<span class="text-gray-500 text-sm">Nenhum número disponível</span>';
-        }
-
-        // Função para atualizar status da estratégia progressiva
-        function atualizarStatusProgressivo() {
-            const statusDiv = document.getElementById('statusProgressivo');
-            const permiteSorteados = document.getElementById('permitirNumerosSorteados').checked;
-            
-            const todosNumeros = Array.from({length: 25}, (_, i) => i + 1);
-            let numerosEliminados = numerosUsadosProgressivo;
-            
-            if (!permiteSorteados) {
-                const eliminadosSet = new Set(numerosUsadosProgressivo);
-                numerosSorteados.forEach(num => eliminadosSet.add(num));
-                numerosEliminados = Array.from(eliminadosSet);
-            }
-            
-            const numerosDisponiveis = todosNumeros.filter(num => !numerosEliminados.includes(num));
-            
-            statusDiv.textContent = `Sequência: ${sequenciaAtual}/10 | Disponíveis: ${numerosDisponiveis.length}`;
-        }
-
-        // Função para gerar números aleatórios únicos
-        function gerarNumerosAleatorios(pool, quantidade) {
-            if (pool.length < quantidade) {
-                return pool.slice();
-            }
-            
-            const resultado = [];
-            const poolCopia = [...pool];
-            
-            while (resultado.length < quantidade && poolCopia.length > 0) {
-                const indiceAleatorio = Math.floor(Math.random() * poolCopia.length);
-                resultado.push(poolCopia.splice(indiceAleatorio, 1)[0]);
-            }
-            
-            return resultado.sort((a, b) => a - b);
-        }
-
-        // Função para formatar número com zeros à esquerda
-        function formatarNumero(num) {
-            return num.toString().padStart(2, '0');
-        }
-
-        // Função para classificar números por faixas (Lotofácil: 1-25)
-        function classificarNumeros(numeros) {
-            const baixas = []; // 01-08
-            const medias = []; // 09-17  
-            const altas = [];  // 18-25
-            
-            numeros.forEach(num => {
-                if (num >= 1 && num <= 8) {
-                    baixas.push(num);
-                } else if (num >= 9 && num <= 17) {
-                    medias.push(num);
-                } else if (num >= 18 && num <= 25) {
-                    altas.push(num);
-                }
+            // Obter números do último concurso
+            const ultimoConcurso = todosResultados.reduce((ultimo, atual) => {
+                return atual.numero > ultimo.numero ? atual : ultimo;
             });
             
-            return { baixas, medias, altas };
+            const numerosUltimoConcurso = new Set((ultimoConcurso.dezenasSorteadasOrdemSorteio || []).map(n => parseInt(n)));
+            
+            for (let i = 1; i <= 25; i++) {
+                const div = document.createElement('div');
+                div.className = 'w-12 h-12 flex flex-col items-center justify-center rounded-lg border-2 font-bold text-xs cursor-pointer transition-all duration-200';
+                
+                const freq = dadosEstatisticos.frequencia[i] || 0;
+                const percentual = ((freq / dadosEstatisticos.totalConcursos) * 100).toFixed(0);
+                
+                // Determinar classe baseada na frequência e último sorteio
+                if (numerosUltimoConcurso.has(i)) {
+                    div.classList.add('numero-sorteado');
+                } else if (dadosEstatisticos.frequentes.includes(i)) {
+                    div.classList.add('numero-frequente');
+                } else if (dadosEstatisticos.raros.includes(i)) {
+                    div.classList.add('numero-raro');
+                } else {
+                    div.classList.add('numero-medio');
+                }
+                
+                div.innerHTML = `
+                    <div>${i.toString().padStart(2, '0')}</div>
+                    <div class="text-xs">${percentual}%</div>
+                `;
+                
+                div.dataset.numero = i;
+                div.dataset.frequencia = freq;
+                
+                grid.appendChild(div);
+            }
         }
 
-        // Função para gerar jogo equilibrado (estratégia inteligente para Lotofácil)
-        function gerarJogoEquilibrado(numerosDisponiveis) {
-            const classificacao = classificarNumeros(numerosDisponiveis);
+        // ESTRATÉGIAS DE GERAÇÃO DE PALPITES
+
+        // Estratégia 1: Eliminação Simples
+        function gerarEstrategia1() {
+            const quantidadeJogos = parseInt(document.getElementById('quantidadeJogos1').value) || 1;
+            
+            if (quantidadeJogos < 1 || quantidadeJogos > 3) {
+                mostrarModal('Erro', 'Quantidade deve ser entre 1 e 3 jogos únicos.');
+                return;
+            }
+
+            // Obter último concurso
+            const ultimoConcurso = todosResultados.reduce((ultimo, atual) => {
+                return atual.numero > ultimo.numero ? atual : ultimo;
+            });
+
+            const numerosEliminados = new Set((ultimoConcurso.dezenasSorteadasOrdemSorteio || []).map(n => parseInt(n)));
+            const numerosDisponiveis = [];
+            
+            for (let i = 1; i <= 25; i++) {
+                if (!numerosEliminados.has(i)) {
+                    numerosDisponiveis.push(i);
+                }
+            }
+
+            if (numerosDisponiveis.length < 15) {
+                mostrarModal('Erro', `Números disponíveis insuficientes: apenas ${numerosDisponiveis.length} disponíveis.`);
+                return;
+            }
+
+            const jogosGerados = [];
+            const numerosUsados = new Set();
+
+            for (let i = 0; i < quantidadeJogos; i++) {
+                const poolDisponivel = numerosDisponiveis.filter(num => !numerosUsados.has(num));
+                
+                if (poolDisponivel.length < 15) break;
+
+                let jogo;
+                if (poolDisponivel.length === 15) {
+                    jogo = poolDisponivel.sort((a, b) => a - b);
+                } else {
+                    jogo = gerarJogoEquilibrado(poolDisponivel, 15);
+                }
+
+                jogosGerados.push(jogo);
+                jogo.forEach(num => numerosUsados.add(num));
+            }
+
+            adicionarAoHistorico(1, jogosGerados, `Eliminou concurso ${ultimoConcurso.numero}`);
+            exibirResultadoEstrategia(1, jogosGerados);
+        }
+
+        // Estratégia 2: Baseada em Frequência
+        function gerarEstrategia2() {
+            const periodosAnalise = parseInt(document.getElementById('periodosAnalise').value) || 50;
+            
+            if (periodosAnalise < 20 || periodosAnalise > 100) {
+                mostrarModal('Erro', 'Período deve ser entre 20 e 100 concursos.');
+                return;
+            }
+
+            // Pegar últimos N concursos
+            const ultimosConcursos = [...todosResultados]
+                .sort((a, b) => b.numero - a.numero)
+                .slice(0, periodosAnalise);
+
+            // Calcular frequência para o período específico
+            const frequenciaPeriodo = {};
+            for (let i = 1; i <= 25; i++) {
+                frequenciaPeriodo[i] = 0;
+            }
+
+            ultimosConcursos.forEach(concurso => {
+                if (concurso.dezenasSorteadasOrdemSorteio) {
+                    concurso.dezenasSorteadasOrdemSorteio.forEach(numero => {
+                        const num = parseInt(numero);
+                        if (num >= 1 && num <= 25) {
+                            frequenciaPeriodo[num]++;
+                        }
+                    });
+                }
+            });
+
+            // Classificar por frequência
+            const numerosOrdenados = Object.entries(frequenciaPeriodo)
+                .map(([num, freq]) => ({ numero: parseInt(num), frequencia: freq }))
+                .sort((a, b) => b.frequencia - a.frequencia);
+
+            // Dividir em categorias para este período
+            const terco = Math.floor(25 / 3);
+            const frequentesPeriodo = numerosOrdenados.slice(0, terco).map(item => item.numero);
+            const mediosPeriodo = numerosOrdenados.slice(terco, terco * 2).map(item => item.numero);
+            const rarosPeriodo = numerosOrdenados.slice(terco * 2).map(item => item.numero);
+
+            // Gerar jogo equilibrado: 5 frequentes, 5 médios, 5 raros
+            const jogo = [];
+            jogo.push(...embaralharArray(frequentesPeriodo).slice(0, 5));
+            jogo.push(...embaralharArray(mediosPeriodo).slice(0, 5));
+            jogo.push(...embaralharArray(rarosPeriodo).slice(0, 5));
+
+            jogo.sort((a, b) => a - b);
+
+            adicionarAoHistorico(2, [jogo], `Freq. baseada em ${periodosAnalise} concursos`);
+            exibirResultadoEstrategia(2, [jogo]);
+        }
+
+        // Estratégia 3: Combinação Inteligente
+        function gerarEstrategia3() {
+            const quantidadeJogos = parseInt(document.getElementById('quantidadeJogos3').value) || 5;
+            
+            if (quantidadeJogos < 1 || quantidadeJogos > 10) {
+                mostrarModal('Erro', 'Quantidade deve ser entre 1 e 10 jogos.');
+                return;
+            }
+
+            // Eliminar números do último concurso
+            const ultimoConcurso = todosResultados.reduce((ultimo, atual) => {
+                return atual.numero > ultimo.numero ? atual : ultimo;
+            });
+
+            const numerosEliminados = new Set((ultimoConcurso.dezenasSorteadasOrdemSorteio || []).map(n => parseInt(n)));
+            const numerosDisponiveis = [];
+            
+            for (let i = 1; i <= 25; i++) {
+                if (!numerosEliminados.has(i)) {
+                    numerosDisponiveis.push(i);
+                }
+            }
+
+            if (numerosDisponiveis.length < 15) {
+                mostrarModal('Erro', 'Números disponíveis insuficientes.');
+                return;
+            }
+
+            const jogosGerados = [];
+
+            for (let i = 0; i < quantidadeJogos; i++) {
+                const jogo = gerarJogoEquilibradoPorFaixas(numerosDisponiveis);
+                jogosGerados.push(jogo);
+            }
+
+            adicionarAoHistorico(3, jogosGerados, `Eliminou ${ultimoConcurso.numero} + faixas`);
+            exibirResultadoEstrategia(3, jogosGerados);
+        }
+
+        // FUNÇÕES AUXILIARES
+
+        // Função para embaralhar array
+        function embaralharArray(array) {
+            const resultado = [...array];
+            for (let i = resultado.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [resultado[i], resultado[j]] = [resultado[j], resultado[i]];
+            }
+            return resultado;
+        }
+
+        // Função para gerar jogo equilibrado
+        function gerarJogoEquilibrado(numerosDisponiveis, quantidade = 15) {
+            if (numerosDisponiveis.length <= quantidade) {
+                return numerosDisponiveis.sort((a, b) => a - b);
+            }
+
+            const embaralhados = embaralharArray(numerosDisponiveis);
+            return embaralhados.slice(0, quantidade).sort((a, b) => a - b);
+        }
+
+        // Função para gerar jogo equilibrado por faixas
+        function gerarJogoEquilibradoPorFaixas(numerosDisponiveis) {
+            const baixos = numerosDisponiveis.filter(n => n >= 1 && n <= 8);
+            const medios = numerosDisponiveis.filter(n => n >= 9 && n <= 17);
+            const altos = numerosDisponiveis.filter(n => n >= 18 && n <= 25);
+
             const jogo = [];
             
-            // Para Lotofácil (15 números), tentar distribuição: 5 baixas, 5 médias, 5 altas
+            // Distribuir: 5 baixos, 5 médios, 5 altos (aproximadamente)
             const distribuicao = [
-                { faixa: 'baixas', quantidade: Math.min(5, classificacao.baixas.length) },
-                { faixa: 'medias', quantidade: Math.min(5, classificacao.medias.length) },
-                { faixa: 'altas', quantidade: Math.min(5, classificacao.altas.length) }
+                { faixa: baixos, quantidade: Math.min(5, baixos.length) },
+                { faixa: medios, quantidade: Math.min(5, medios.length) },
+                { faixa: altos, quantidade: Math.min(5, altos.length) }
             ];
-            
-            // Ajustar distribuição para totalizar 15 números
+
+            // Ajustar para totalizar 15
             let totalEscolhido = distribuicao.reduce((sum, d) => sum + d.quantidade, 0);
             
-            // Se temos menos de 15, adicionar mais onde possível
             while (totalEscolhido < 15) {
                 for (let dist of distribuicao) {
-                    const disponiveisNaFaixa = classificacao[dist.faixa].length;
-                    if (dist.quantidade < disponiveisNaFaixa && totalEscolhido < 15) {
+                    if (dist.quantidade < dist.faixa.length && totalEscolhido < 15) {
                         dist.quantidade++;
                         totalEscolhido++;
                     }
                 }
                 break;
             }
-            
-            // Se ainda temos mais de 15, reduzir
-            while (totalEscolhido > 15) {
-                for (let dist of distribuicao.reverse()) {
-                    if (dist.quantidade > 0 && totalEscolhido > 15) {
-                        dist.quantidade--;
-                        totalEscolhido--;
-                    }
-                }
-                break;
-            }
-            
-            // Escolher números de cada faixa
+
+            // Escolher números
             distribuicao.forEach(dist => {
-                const numerosEscolhidos = gerarNumerosAleatorios(classificacao[dist.faixa], dist.quantidade);
-                jogo.push(...numerosEscolhidos);
+                const escolhidos = embaralharArray(dist.faixa).slice(0, dist.quantidade);
+                jogo.push(...escolhidos);
             });
-            
+
             return jogo.sort((a, b) => a - b);
         }
 
-        // Função para obter números disponíveis considerando checkbox
-        function obterNumerosDisponiveis() {
-            const permiteSorteados = document.getElementById('permitirNumerosSorteados').checked;
-            const todosNumeros = Array.from({length: 25}, (_, i) => i + 1);
-            
-            if (permiteSorteados) {
-                // Se permite sorteados, usar apenas eliminados globais originais
-                return todosNumeros.filter(num => !numerosEliminadosGlobal.includes(num));
-            } else {
-                // Se não permite sorteados, excluir também números sorteados
-                const eliminadosSet = new Set(numerosEliminadosGlobal);
-                numerosSorteados.forEach(num => eliminadosSet.add(num));
-                return todosNumeros.filter(num => !eliminadosSet.has(num));
-            }
-        }
-
-        // Função para estratégia 1: Eliminação simples
-        function gerarEstrategia1() {
-            if (!ultimoConcursoData) {
-                mostrarModal('Erro', 'Nenhum dado de concurso disponível.');
-                return;
-            }
-
-            const quantidadeJogos = parseInt(document.getElementById('quantidadeJogos1').value) || 1;
-            
-            if (quantidadeJogos < 1 || quantidadeJogos > 10) {
-                mostrarModal('Erro', 'Quantidade deve ser entre 1 e 10 jogos únicos.');
-                return;
-            }
-
-            const numerosDisponiveis = obterNumerosDisponiveis();
-            
-            // Para Lotofácil: se só restam 10 números (25-15=10), só conseguimos fazer 1 jogo de cada vez
-            if (numerosDisponiveis.length < 15) {
-                mostrarModal('Erro', `Números disponíveis insuficientes: apenas ${numerosDisponiveis.length} disponíveis para um jogo de 15 números.`);
-                return;
-            }
-            
-            // Gerar múltiplos jogos únicos
-            const jogosGerados = [];
-            const numerosJaUsados = new Set();
-            
-            for (let i = 0; i < quantidadeJogos; i++) {
-                // Pool disponível para este jogo
-                const poolDisponivel = numerosDisponiveis.filter(num => !numerosJaUsados.has(num));
-                
-                if (poolDisponivel.length < 15) {
-                    break; // Não consegue mais gerar jogos únicos
-                }
-                
-                // Gerar jogo equilibrado com 15 números
-                let jogo;
-                if (poolDisponivel.length === 15) {
-                    // Se temos exatamente 15, usar todos
-                    jogo = poolDisponivel.sort((a, b) => a - b);
-                } else {
-                    // Se temos mais de 15, gerar jogo equilibrado
-                    jogo = gerarJogoEquilibrado(poolDisponivel);
-                }
-                
-                jogosGerados.push(jogo);
-                jogo.forEach(num => numerosJaUsados.add(num));
-            }
-            
-            // Adicionar ao histórico
+        // Função para adicionar ao histórico
+        function adicionarAoHistorico(estrategia, jogos, info) {
             const horario = new Date().toLocaleTimeString('pt-BR');
             const novoPalpite = {
                 id: Date.now(),
-                estrategia: 1,
-                jogos: jogosGerados,
-                quantidade: jogosGerados.length,
+                estrategia: estrategia,
+                jogos: jogos,
+                quantidade: jogos.length,
                 horario: horario,
-                info: `${jogosGerados.length} jogos únicos - Eliminou concurso ${ultimoConcursoData.numero}`
+                info: info
             };
             
             historicoPalpitesData.unshift(novoPalpite);
-            
-            // Atualizar interface
-            exibirResultadoEstrategia1(jogosGerados);
             atualizarHistoricoPalpites();
         }
 
-        // Função para estratégia 3: Eliminação livre (permite repetições)
-        function gerarEstrategia3() {
-            if (!ultimoConcursoData) {
-                mostrarModal('Erro', 'Nenhum dado de concurso disponível.');
-                return;
+        // Função para exibir resultado da estratégia
+        function exibirResultadoEstrategia(estrategia, jogos) {
+            const resultadoDiv = document.getElementById(`resultadoEstrategia${estrategia}`);
+            
+            let corFundo, corTexto, emoji;
+            switch(estrategia) {
+                case 1: 
+                    corFundo = 'bg-green-100 dark:bg-green-800 border-green-300 dark:border-green-600';
+                    corTexto = 'text-green-800 dark:text-green-200';
+                    emoji = '🌸';
+                    break;
+                case 2:
+                    corFundo = 'bg-blue-100 dark:bg-blue-800 border-blue-300 dark:border-blue-600';
+                    corTexto = 'text-blue-800 dark:text-blue-200';
+                    emoji = '📊';
+                    break;
+                case 3:
+                    corFundo = 'bg-purple-100 dark:bg-purple-800 border-purple-300 dark:border-purple-600';
+                    corTexto = 'text-purple-800 dark:text-purple-200';
+                    emoji = '🎰';
+                    break;
             }
-
-            const quantidadeJogos = parseInt(document.getElementById('quantidadeJogos3').value) || 5;
-            
-            if (quantidadeJogos < 1 || quantidadeJogos > 50) {
-                mostrarModal('Erro', 'Quantidade deve ser entre 1 e 50 jogos.');
-                return;
-            }
-
-            const numerosDisponiveis = obterNumerosDisponiveis();
-            
-            if (numerosDisponiveis.length < 15) {
-                mostrarModal('Erro', `Números disponíveis insuficientes: apenas ${numerosDisponiveis.length} disponíveis para um jogo de 15 números.`);
-                return;
-            }
-            
-            // ESTRATÉGIA 3: Permitir repetição de números entre jogos
-            const jogosGerados = [];
-            
-            for (let i = 0; i < quantidadeJogos; i++) {
-                let jogo;
-                if (numerosDisponiveis.length === 15) {
-                    // Se temos exatamente 15, usar todos (sem variação possível)
-                    jogo = numerosDisponiveis.sort((a, b) => a - b);
-                } else {
-                    // Se temos mais de 15, gerar jogo equilibrado (permite repetição)
-                    jogo = gerarJogoEquilibrado(numerosDisponiveis);
-                }
-                
-                jogosGerados.push(jogo);
-            }
-            
-            // Adicionar ao histórico
-            const horario = new Date().toLocaleTimeString('pt-BR');
-            const novoPalpite = {
-                id: Date.now(),
-                estrategia: 3,
-                jogos: jogosGerados,
-                quantidade: jogosGerados.length,
-                horario: horario,
-                info: `${jogosGerados.length} jogos - Eliminou concurso ${ultimoConcursoData.numero} (com repetição)`
-            };
-            
-            historicoPalpitesData.unshift(novoPalpite);
-            
-            // Atualizar interface
-            exibirResultadoEstrategia3(jogosGerados);
-            atualizarHistoricoPalpites();
-        }
-
-        // Função para estratégia 2: Eliminação progressiva
-        function gerarEstrategia2() {
-            if (!ultimoConcursoData) {
-                mostrarModal('Erro', 'Nenhum dado de concurso disponível.');
-                return;
-            }
-
-            const permiteSorteados = document.getElementById('permitirNumerosSorteados').checked;
-            const todosNumeros = Array.from({length: 25}, (_, i) => i + 1);
-            
-            // Considerar números sorteados no progressivo
-            let numerosEliminadosAtual = numerosUsadosProgressivo;
-            if (!permiteSorteados) {
-                const eliminadosSet = new Set(numerosUsadosProgressivo);
-                numerosSorteados.forEach(num => eliminadosSet.add(num));
-                numerosEliminadosAtual = Array.from(eliminadosSet);
-            }
-            
-            const numerosDisponiveis = todosNumeros.filter(num => !numerosEliminadosAtual.includes(num));
-            
-            // Verificar se precisa reiniciar (Lotofácil precisa de 15 números)
-            if (numerosDisponiveis.length < 15) {
-                reiniciarEstrategia2();
-                
-                // Recalcular após reiniciar
-                let numerosEliminadosReiniciados = numerosUsadosProgressivo;
-                if (!permiteSorteados) {
-                    const eliminadosSet = new Set(numerosUsadosProgressivo);
-                    numerosSorteados.forEach(num => eliminadosSet.add(num));
-                    numerosEliminadosReiniciados = Array.from(eliminadosSet);
-                }
-                
-                const numerosDisponiveisNovo = todosNumeros.filter(num => !numerosEliminadosReiniciados.includes(num));
-                
-                // Gerar jogo equilibrado após reiniciar
-                let palpite;
-                if (numerosDisponiveisNovo.length === 15) {
-                    palpite = numerosDisponiveisNovo.sort((a, b) => a - b);
-                } else {
-                    palpite = gerarJogoEquilibrado(numerosDisponiveisNovo);
-                }
-                
-                // Atualizar arrays
-                numerosUsadosProgressivo.push(...palpite);
-                sequenciaAtual++;
-                
-                // Adicionar ao histórico
-                const horario = new Date().toLocaleTimeString('pt-BR');
-                const novoPalpite = {
-                    id: Date.now(),
-                    estrategia: 2,
-                    jogos: [palpite],
-                    horario: horario,
-                    info: `Seq. ${sequenciaAtual-1} (Reiniciado)`
-                };
-                
-                historicoPalpitesData.unshift(novoPalpite);
-                
-                // Atualizar interface
-                exibirResultadoEstrategia2([palpite], true);
-                atualizarVisualizacaoNumeros();
-                atualizarStatusProgressivo();
-                atualizarHistoricoPalpites();
-                
-                return;
-            }
-            
-            // Gerar jogo equilibrado
-            let palpite;
-            if (numerosDisponiveis.length === 15) {
-                palpite = numerosDisponiveis.sort((a, b) => a - b);
-            } else {
-                palpite = gerarJogoEquilibrado(numerosDisponiveis);
-            }
-            
-            // Atualizar arrays
-            numerosUsadosProgressivo.push(...palpite);
-            sequenciaAtual++;
-            
-            // Adicionar ao histórico
-            const horario = new Date().toLocaleTimeString('pt-BR');
-            const novoPalpite = {
-                id: Date.now(),
-                estrategia: 2,
-                jogos: [palpite],
-                horario: horario,
-                info: `Sequência ${sequenciaAtual-1}`
-            };
-            
-            historicoPalpitesData.unshift(novoPalpite);
-            
-            // Atualizar interface
-            exibirResultadoEstrategia2([palpite], false);
-            atualizarVisualizacaoNumeros();
-            atualizarStatusProgressivo();
-            atualizarHistoricoPalpites();
-        }
-
-        // Função para reiniciar estratégia 2
-        function reiniciarEstrategia2() {
-            numerosUsadosProgressivo = [...numerosEliminadosGlobal];
-            sequenciaAtual = 1;
-        }
-
-        // Função para exibir resultado da estratégia 1 (múltiplos jogos)
-        function exibirResultadoEstrategia1(jogos) {
-            const resultadoDiv = document.getElementById('resultadoEstrategia1');
             
             let jogosHTML = '';
             jogos.forEach((jogo, index) => {
                 const numerosHTML = jogo
-                    .map(num => `<span class="numero-palpite px-2 py-1 rounded-full text-xs font-bold font-mono">${formatarNumero(num)}</span>`)
+                    .map(num => `<span class="numero-palpite px-2 py-1 rounded-full text-xs font-bold font-mono">${num.toString().padStart(2, '0')}</span>`)
                     .join(' ');
                 
                 jogosHTML += `
-                    <div class="mb-3 p-3 bg-white dark:bg-gray-800 rounded border border-green-300 dark:border-green-600">
-                        <div class="text-xs font-medium text-green-700 dark:text-green-300 mb-2 text-center">
+                    <div class="mb-3 p-3 bg-white dark:bg-gray-800 rounded border">
+                        <div class="text-xs font-medium ${corTexto} mb-2 text-center">
                             Jogo ${index + 1}:
                         </div>
                         <div class="flex flex-wrap gap-1 justify-center">
@@ -2332,120 +1786,14 @@
             });
             
             resultadoDiv.innerHTML = `
-                <div class="bg-green-100 dark:bg-green-800 border border-green-300 dark:border-green-600 rounded-lg p-3">
-                    <div class="text-sm font-medium text-green-800 dark:text-green-200 mb-3">
-                        ✅ ${jogos.length} Palpite(s) Gerado(s):
+                <div class="${corFundo} border rounded-lg p-3">
+                    <div class="text-sm font-medium ${corTexto} mb-3">
+                        ${emoji} ${jogos.length} Palpite(s) Gerado(s):
                     </div>
                     ${jogosHTML}
                     
-                    <!-- Botões de Download -->
-                    <div class="mt-4 flex flex-wrap gap-2 justify-center">
-                        <button onclick="baixarPalpitesLotofacil(${JSON.stringify(jogos).replace(/"/g, '&quot;')}, 'txt', 1)" 
-                                class="bg-blue-500 hover:bg-blue-600 text-white text-xs py-1 px-3 rounded transition-colors">
-                            📄 TXT
-                        </button>
-                        <button onclick="baixarPalpitesLotofacil(${JSON.stringify(jogos).replace(/"/g, '&quot;')}, 'html', 1)" 
-                                class="bg-orange-500 hover:bg-orange-600 text-white text-xs py-1 px-3 rounded transition-colors">
-                            🌐 HTML
-                        </button>
-                        <button onclick="baixarPalpitesLotofacil(${JSON.stringify(jogos).replace(/"/g, '&quot;')}, 'xlsx', 1)" 
-                                class="bg-green-500 hover:bg-green-600 text-white text-xs py-1 px-3 rounded transition-colors">
-                            📊 XLSX
-                        </button>
-                    </div>
-                    
-                    <div class="text-xs text-green-600 dark:text-green-400 mt-2 text-center">
-                        ${jogos.length} jogo(s) | Eliminou ${numerosEliminadosGlobal.length} do concurso ${ultimoConcursoData.numero}
-                    </div>
-                </div>
-            `;
-            
-            resultadoDiv.classList.remove('hidden');
-        }
-
-        // Função para exibir resultado da estratégia 3 (múltiplos jogos com repetição)
-        function exibirResultadoEstrategia3(jogos) {
-            const resultadoDiv = document.getElementById('resultadoEstrategia3');
-            
-            let jogosHTML = '';
-            jogos.forEach((jogo, index) => {
-                const numerosHTML = jogo
-                    .map(num => `<span class="numero-palpite px-2 py-1 rounded-full text-xs font-bold font-mono">${formatarNumero(num)}</span>`)
-                    .join(' ');
-                
-                jogosHTML += `
-                    <div class="mb-3 p-3 bg-white dark:bg-gray-800 rounded border border-purple-300 dark:border-purple-600">
-                        <div class="text-xs font-medium text-purple-700 dark:text-purple-300 mb-2 text-center">
-                            Jogo ${index + 1}:
-                        </div>
-                        <div class="flex flex-wrap gap-1 justify-center">
-                            ${numerosHTML}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            resultadoDiv.innerHTML = `
-                <div class="bg-purple-100 dark:bg-purple-800 border border-purple-300 dark:border-purple-600 rounded-lg p-3">
-                    <div class="text-sm font-medium text-purple-800 dark:text-purple-200 mb-3">
-                        ✅ ${jogos.length} Palpite(s) Gerado(s):
-                    </div>
-                    ${jogosHTML}
-                    
-                    <!-- Botões de Download -->
-                    <div class="mt-4 flex flex-wrap gap-2 justify-center">
-                        <button onclick="baixarPalpitesLotofacil(${JSON.stringify(jogos).replace(/"/g, '&quot;')}, 'txt', 3)" 
-                                class="bg-blue-500 hover:bg-blue-600 text-white text-xs py-1 px-3 rounded transition-colors">
-                            📄 TXT
-                        </button>
-                        <button onclick="baixarPalpitesLotofacil(${JSON.stringify(jogos).replace(/"/g, '&quot;')}, 'html', 3)" 
-                                class="bg-orange-500 hover:bg-orange-600 text-white text-xs py-1 px-3 rounded transition-colors">
-                            🌐 HTML
-                        </button>
-                        <button onclick="baixarPalpitesLotofacil(${JSON.stringify(jogos).replace(/"/g, '&quot;')}, 'xlsx', 3)" 
-                                class="bg-green-500 hover:bg-green-600 text-white text-xs py-1 px-3 rounded transition-colors">
-                            📊 XLSX
-                        </button>
-                    </div>
-                    
-                    <div class="text-xs text-purple-600 dark:text-purple-400 mt-2 text-center">
-                        ${jogos.length} jogo(s) | Eliminou ${numerosEliminadosGlobal.length} do concurso ${ultimoConcursoData.numero} | ✨ Permite repetição
-                    </div>
-                </div>
-            `;
-            
-            resultadoDiv.classList.remove('hidden');
-        }
-
-        // Função para exibir resultado da estratégia 2
-        function exibirResultadoEstrategia2(jogos, reiniciado = false) {
-            const resultadoDiv = document.getElementById('resultadoEstrategia2');
-            
-            const numerosHTML = jogos[0]
-                .map(num => `<span class="numero-palpite px-2 py-1 rounded-full text-xs font-bold">${num}</span>`)
-                .join(' ');
-            
-            const statusTexto = reiniciado ? 
-                `🔄 Reiniciado - Sequência ${sequenciaAtual-1}` : 
-                `Sequência ${sequenciaAtual-1} de 10`;
-            
-            resultadoDiv.innerHTML = `
-                <div class="bg-blue-100 dark:bg-blue-800 border border-blue-300 dark:border-blue-600 rounded-lg p-3">
-                    <div class="text-sm font-medium text-blue-800 dark:text-blue-200 mb-3">
-                        ✅ Palpite Gerado:
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 p-3 rounded border border-blue-300 dark:border-blue-600">
-                        <div class="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2 text-center">
-                            Jogo:
-                        </div>
-                        <div class="flex flex-wrap gap-1 justify-center">
-                            ${numerosHTML}
-                        </div>
-                    </div>
-                    
-                    <div class="text-xs text-blue-600 dark:text-blue-400 mt-2 text-center">
-                        ${statusTexto} | 15 números | Total eliminado: ${numerosUsadosProgressivo.length}
+                    <div class="text-xs ${corTexto} mt-2 text-center">
+                        ${jogos.length} jogo(s) | Baseado em dados reais da API da Caixa
                     </div>
                 </div>
             `;
@@ -2471,20 +1819,19 @@
                 .map(palpite => {
                     let estrategiaTexto;
                     switch(palpite.estrategia) {
-                        case 1: estrategiaTexto = '🌸 Simples'; break;
-                        case 2: estrategiaTexto = '🔄 Progressiva'; break;
-                        case 3: estrategiaTexto = '🎰 Livre'; break;
+                        case 1: estrategiaTexto = '🌸 Eliminação'; break;
+                        case 2: estrategiaTexto = '📊 Frequência'; break;
+                        case 3: estrategiaTexto = '🎰 Inteligente'; break;
                         default: estrategiaTexto = '❓ Desconhecida';
                     }
                     
-                    // Para Lotofácil, mostrar o primeiro jogo
                     let numerosParaExibir = [];
                     if (palpite.jogos && palpite.jogos.length > 0) {
                         numerosParaExibir = palpite.jogos[0];
                     }
                     
                     const numerosHTML = numerosParaExibir
-                        .map(num => `<span class="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded text-xs font-mono">${num}</span>`)
+                        .map(num => `<span class="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded text-xs font-mono">${num.toString().padStart(2, '0')}</span>`)
                         .join(' ');
                     
                     return `
@@ -2508,29 +1855,56 @@
             listaDiv.innerHTML = historicoHTML;
         }
 
-        // Função para limpar histórico
-        function limparHistorico() {
-            historicoPalpitesData = [];
-            atualizarHistoricoPalpites();
+        // Função para mostrar modal personalizada
+        function mostrarModal(titulo, mensagem) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">${titulo}</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">${mensagem}</p>
+                    <div class="flex justify-end">
+                        <button class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded" onclick="this.closest('.fixed').remove()">OK</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
         }
+
+        // Event listeners
+        buscarBtn.addEventListener('click', carregarTodosOsConcursosDaCaixa);
+        cancelarBtn.addEventListener('click', cancelarCarregamento);
+        
+        // Event listeners para filtros
+        for (let i = 1; i <= 15; i++) {
+            const filtro = document.getElementById(`filtro${i}`);
+            filtro.addEventListener('input', aplicarFiltros);
+        }
+
+        destacarPares.addEventListener('change', atualizarDestaques);
+        destacarImpares.addEventListener('change', atualizarDestaques);
+        
+        ordenarCrescente.addEventListener('change', () => {
+            if (todosResultados.length > 0) {
+                exibirTodosResultados();
+                gerarEstatisticasReais();
+            }
+        });
+
+        ordenarConcursoDecrescente.addEventListener('change', () => {
+            if (todosResultados.length > 0) {
+                exibirTodosResultados();
+            }
+        });
 
         // Event listeners do gerador de palpites
         document.getElementById('gerarEstrategia1').addEventListener('click', gerarEstrategia1);
         document.getElementById('gerarEstrategia2').addEventListener('click', gerarEstrategia2);
         document.getElementById('gerarEstrategia3').addEventListener('click', gerarEstrategia3);
-        document.getElementById('resetEstrategia2').addEventListener('click', () => {
-            reiniciarEstrategia2();
-            atualizarVisualizacaoNumeros();
-            atualizarStatusProgressivo();
-            document.getElementById('resultadoEstrategia2').classList.add('hidden');
-        });
-        document.getElementById('limparHistorico').addEventListener('click', limparHistorico);
-
-        // Event listener para números sorteados
-        document.getElementById('permitirNumerosSorteados').addEventListener('change', () => {
-            atualizarEstadoNumerosSorteados();
-            atualizarVisualizacaoNumeros();
-            atualizarStatusProgressivo();
+        
+        document.getElementById('limparHistorico').addEventListener('click', () => {
+            historicoPalpitesData = [];
+            atualizarHistoricoPalpites();
         });
 
         // Event listeners do modal
@@ -2549,140 +1923,26 @@
             }
         });
 
-        // FUNÇÕES DE DOWNLOAD PARA LOTOFÁCIL
-
-        // Função para gerar conteúdo TXT (Lotofácil)
-        function gerarTXTLotofacil(jogos) {
-            let txt = '';
-            jogos.forEach((jogo, index) => {
-                txt += `Jogo ${index + 1}: ${jogo.map(num => formatarNumero(num)).join(' ')}\n`;
-            });
-            return txt;
-        }
-
-        // Função para gerar conteúdo HTML (Lotofácil)
-        function gerarHTMLLotofacil(jogos, estrategia) {
-            const estrategiaTexto = estrategia === 1 ? 'Eliminação Simples' : (estrategia === 2 ? 'Eliminação Progressiva' : 'Eliminação Livre');
-            const data = new Date().toLocaleDateString('pt-BR');
-            const hora = new Date().toLocaleTimeString('pt-BR');
+        // Event listener para toggle da tabela
+        document.getElementById('toggleTabelaBtn').addEventListener('click', () => {
+            const resultados = document.getElementById('resultados');
+            const toggleBtn = document.getElementById('toggleTabelaBtn');
             
-            let html = `<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palpites Lotofácil - ${estrategiaTexto}</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .jogo { margin: 15px 0; padding: 15px; border: 2px solid #7d177d; border-radius: 8px; background: #fbe9fb; }
-        .numeros { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        .numero { background: #7d177d; color: white; padding: 8px 12px; border-radius: 50%; font-weight: bold; min-width: 30px; text-align: center; }
-        .info { color: #666; font-size: 14px; text-align: center; margin-top: 20px; }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>🌸 Lotofácil - Palpites Gerados</h1>
-        <h2>Estratégia: ${estrategiaTexto}</h2>
-        <p>Gerado em: ${data} às ${hora}</p>
-        <p>Eliminou concurso: ${ultimoConcursoData.numero}</p>
-    </div>`;
-
-            jogos.forEach((jogo, index) => {
-                html += `
-    <div class="jogo">
-        <h3>Jogo ${index + 1}</h3>
-        <div class="numeros">`;
-        
-        jogo.forEach(num => {
-            html += `<div class="numero">${formatarNumero(num)}</div>`;
-        });
-        
-        html += `
-        </div>
-    </div>`;
-            });
-
-            html += `
-    <div class="info">
-        <p>Total de jogos: ${jogos.length}</p>
-        <p>Gerado pela aplicação Resultados Lotofácil</p>
-    </div>
-</body>
-</html>`;
-            
-            return html;
-        }
-
-        // Função para gerar conteúdo CSV (Lotofácil)
-        function gerarCSVLotofacil(jogos) {
-            let csv = 'Jogo,Bola1,Bola2,Bola3,Bola4,Bola5,Bola6,Bola7,Bola8,Bola9,Bola10,Bola11,Bola12,Bola13,Bola14,Bola15\n';
-            jogos.forEach((jogo, index) => {
-                const numerosFormatados = jogo.map(num => formatarNumero(num)).join(',');
-                csv += `${index + 1},${numerosFormatados}\n`;
-            });
-            return csv;
-        }
-
-        // Função principal para baixar palpites (Lotofácil)
-        function baixarPalpitesLotofacil(jogos, formato, estrategia) {
-            let conteudo, nomeArquivo, tipoMime;
-            
-            const timestamp = new Date().toISOString().slice(0,10);
-            const estrategiaTexto = estrategia === 1 ? 'simples' : (estrategia === 2 ? 'progressiva' : 'livre');
-            
-            switch(formato) {
-                case 'txt':
-                    conteudo = gerarTXTLotofacil(jogos);
-                    nomeArquivo = `palpites-lotofacil-${estrategiaTexto}-${timestamp}.txt`;
-                    tipoMime = 'text/plain';
-                    break;
-                
-                case 'html':
-                    conteudo = gerarHTMLLotofacil(jogos, estrategia);
-                    nomeArquivo = `palpites-lotofacil-${estrategiaTexto}-${timestamp}.html`;
-                    tipoMime = 'text/html';
-                    break;
-                
-                case 'xlsx':
-                    conteudo = gerarCSVLotofacil(jogos);
-                    nomeArquivo = `palpites-lotofacil-${estrategiaTexto}-${timestamp}.csv`;
-                    tipoMime = 'text/csv';
-                    break;
-                
-                default:
-                    mostrarModal('Erro', 'Formato não suportado');
-                    return;
-            }
-            
-            // Criar e baixar arquivo
-            const blob = new Blob([conteudo], { type: tipoMime });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = nomeArquivo;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }
-
-        // Validação do input quantidade de jogos estratégia 1
-        document.getElementById('quantidadeJogos1').addEventListener('input', function () {
-            let val = parseInt(this.value, 10);
-
-            if (isNaN(val) || val < 1) {
-                this.value = 1;
-            } else if (val > 10) {
-                this.value = 10;
+            if (resultados.classList.contains('hidden')) {
+                resultados.classList.remove('hidden');
+                toggleBtn.textContent = '👁️ Ocultar Tabela de Resultados';
+                toggleBtn.className = 'bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200';
+            } else {
+                resultados.classList.add('hidden');
+                toggleBtn.textContent = '👁️ Mostrar Tabela de Resultados';
+                toggleBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200';
             }
         });
 
-        // 🚀 CARREGAR TODOS OS CONCURSOS AUTOMATICAMENTE AO ABRIR A APP
+        // 🚀 CARREGAR AUTOMATICAMENTE AO ABRIR A APP
         document.addEventListener('DOMContentLoaded', async () => {
-            console.log('🚀 APP INICIADA: Carregando TODOS os concursos da Lotofácil automaticamente...');
-            await carregarTodosOsConcursos();
+            console.log('🚀 APP INICIADA: Carregando dados da API oficial da Caixa...');
+            await carregarTodosOsConcursosDaCaixa();
         });
     </script>
 </body>
